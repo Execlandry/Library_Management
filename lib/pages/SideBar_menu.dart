@@ -22,7 +22,7 @@ class _SideBarState extends State<SideBar> {
             Container(
               // color: AppColor.white,
               //gave margin on horizontal and vertical
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Text(
                 "ADMIN PANEL",
                 style: TextStyle(
@@ -51,6 +51,8 @@ class _SideBarState extends State<SideBar> {
               // icon: "assets/menu_home.png",
               press: () {},
             ),
+            const Spacer(),
+            // Image.asset("assets/sidebar_image")
           ],
         ),
       ),
