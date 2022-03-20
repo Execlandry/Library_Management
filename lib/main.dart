@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:library_management/pages/home_page.dart';
+import 'package:library_management/pages/dashboard/Entrypoint/dash_land.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
-      home: const HomePage(),
+      home: const DashLand(),
     );
   }
 }

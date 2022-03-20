@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:library_management/common/app_colors.dart';
-import 'package:library_management/pages/dashboard/dashboard.dart';
+import 'package:library_management/pages/dashboard/Entrypoint/dashboard.dart';
 
-import 'SideBar_menu.dart';
+import 'sidebar_menu.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class DashLand extends StatefulWidget {
+  const DashLand({Key? key}) : super(key: key);
   @override
-  _HomePageState createState() => _HomePageState();
+  _DashLandState createState() => _DashLandState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DashLandState extends State<DashLand> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +18,12 @@ class _HomePageState extends State<HomePage> {
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            // ignore: prefer_const_literals_to_create_immutables
             children: [
               //side Navigation Menu
-              Expanded(child: SideBar()),
+              const Expanded(child: SideBar()),
               //Main Body Part
-              Expanded(
+              const Expanded(
                   //flex tells how much a container should be in width
                   flex: 5,
                   child: Dashboard()),

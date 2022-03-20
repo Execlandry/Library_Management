@@ -3,7 +3,7 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/pages/dashboard/DisplayData/display_data_widget.dart';
 import 'package:library_management/pages/dashboard/Notifcationwidget/notification_card.dart';
 
-import 'header_widget.dart';
+import '../Header/header_widget.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -30,18 +30,16 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Expanded(
                   flex: 2,
-                  child: Container(
-                    child: Column(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        NotificationCardWidget(),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        DisplayDataWidget(),
-                      ],
-                    ),
-                    // color: AppColor.black,
+                  child: Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      const NotificationCardWidget(),
+                      // ignore: prefer_const_constructors
+                      SizedBox(
+                        height: 20,
+                      ),
+                      const DisplayDataWidget(),
+                    ],
                   ),
                 ),
                 Expanded(

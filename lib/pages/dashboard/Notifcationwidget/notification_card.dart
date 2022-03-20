@@ -44,6 +44,7 @@ class NotificationCardWidget extends StatelessWidget {
                   height: 1.5,
                 ),
               ),
+              // ignore: prefer_const_constructors
               SizedBox(
                 height: 10,
               ),
@@ -57,7 +58,7 @@ class NotificationCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           // Image.asset(
           //   "assets/notification_image.png",
           //   height: 160,
