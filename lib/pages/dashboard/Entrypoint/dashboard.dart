@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/pages/dashboard/DisplayData/display_data_widget.dart';
-import 'package:library_management/pages/dashboard/Notifcationwidget/notification_card.dart';
+import 'package:library_management/pages/dashboard/Notificationwidget/notification_card.dart';
 
 import '../Header/header_widget.dart';
 
