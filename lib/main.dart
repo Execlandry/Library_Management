@@ -16,7 +16,16 @@ class MyApp extends StatelessWidget {
       title: 'LibMe',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
+          textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme).apply(
+            bodyColor: Colors.black
+          ),
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+
+          }),
+          primaryColor: Colors.blue
+          ),
       initialRoute: AppRoutes.dashboard,
       getPages: AppRoutes.routes,
     );
