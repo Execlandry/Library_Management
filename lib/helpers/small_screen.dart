@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SmallScreen extends StatelessWidget {
-  const SmallScreen({ Key? key }) : super(key: key);
+  const SmallScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints.expand(),
+      constraints: const BoxConstraints.expand(),
       color: Colors.green,
-      
     );
   }
 }

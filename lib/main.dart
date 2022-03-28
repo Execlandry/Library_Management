@@ -1,9 +1,13 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:library_management/controllers/menu_controller.dart';
 import 'package:library_management/routes/routes.dart';
 
 void main() {
+  Get.put(MenuController());
   runApp(const MyApp());
 }
 
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme).apply(
             bodyColor: Colors.black
           ),
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
+          pageTransitionsTheme: const PageTransitionsTheme(builders: {
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
             TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
 

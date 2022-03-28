@@ -1,5 +1,17 @@
 import 'package:get/get.dart';
-import 'package:library_management/pages/dashboard/Entrypoint/dashland.dart';
+import 'package:library_management/landing.dart';
+
+const OverViewPageRoute = "Overview";
+const DriversPageRoute = "Drivers";
+const ClientsPageRoute = "Clients";
+const AuthenticationPageRoute = "Authentication";
+
+List sideMenuItems = [
+  OverViewPageRoute,
+  DriversPageRoute,
+  ClientsPageRoute,
+  AuthenticationPageRoute,
+];
 
 class AppRoutes {
   static const dashboard = Routes.dashboard;
@@ -7,7 +19,7 @@ class AppRoutes {
 // static const login = Routes.login;
 
   static final routes = [
-    GetPage(name: Routes.dashboard, page: () => const DashLand()),
+    GetPage(name: Routes.dashboard, page: () => const Landing()),
     // GetPage(name: Routes.register, page: () =>  RegisterView()),
     // GetPage(name: Routes.login, page: () =>  LoginView()),
   ];

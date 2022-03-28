@@ -9,16 +9,16 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           ? Row(
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: 14),
-                  child: Image.asset(
-                    "assets/user1.png",
-                    width: 28,
-                  ),
+                  padding: const EdgeInsets.only(left: 14),
+                  // child: Image.asset(
+                  //   "assets/user1.png",
+                  //   width: 28,
+                  // ),
                 ),
               ],
             )
           : IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: () {
                 key.currentState?.openDrawer();
               },
@@ -27,7 +27,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       title: Row(children: [
         Visibility(
             child: CustomText(
-          text: "Dash",
+          text: "Dashboard",
           color: AppColor.lightGrey,
           size: 20,
           weight: FontWeight.bold,
@@ -38,7 +38,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
         IconButton(
           icon: Icon(
             Icons.settings,
-            // color: AppColor.dark.withOpactiy(.7),
+            color: AppColor.dark.withOpacity(.7),
           ),
           onPressed: () {},
         ),
@@ -57,7 +57,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               child: Container(
                 width: 12,
                 height: 12,
-                padding: EdgeInsets.all(4),
+                padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(color: AppColor.light, width: 2),
@@ -71,7 +71,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           height: 22,
           color: AppColor.lightGrey,
         ),
-        SizedBox(
+        const SizedBox(
           width: 24,
         ),
         CustomText(
@@ -80,7 +80,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           weight: FontWeight.bold,
           size: 16,
         ),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Container(
@@ -89,8 +89,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             borderRadius: BorderRadius.circular(30),
           ),
           child: Container(
-            padding: EdgeInsets.all(2),
-            margin: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
+            margin: const EdgeInsets.all(2),
             child: CircleAvatar(
               backgroundColor: AppColor.light,
               child: Icon(Icons.person_outline, color: AppColor.dark),
@@ -101,5 +101,5 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       iconTheme: IconThemeData(
         color: AppColor.dark,
       ),
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColor.light,
     );

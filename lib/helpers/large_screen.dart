@@ -12,9 +12,9 @@ class LargeScreen extends StatelessWidget {
       // ignore: prefer_const_literals_to_create_immutables
       children: [
         //side Navigation Menu
-        Expanded(child: SideBar()),
+        const Expanded(child: SideBar()),
         //Main Body Part
-        Expanded(
+        const Expanded(
             //flex tells how much a container should be in width
             flex: 5,
             child: Dashboard()),
