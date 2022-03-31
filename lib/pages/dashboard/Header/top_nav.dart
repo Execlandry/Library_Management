@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_management/common/app_colors.dart';
-import 'package:library_management/helpers/responsive.dart';
+import 'package:library_management/helpers/screen_helper/responsive.dart';
 import 'package:library_management/widgets/CustomText/custom_text.dart';
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>

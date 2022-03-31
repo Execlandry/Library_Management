@@ -5,10 +5,10 @@ class DisplayDataWidget extends StatefulWidget {
   const DisplayDataWidget({Key? key}) : super(key: key);
 
   @override
-  _DisplayDataWidgetState createState() => _DisplayDataWidgetState();
+  _DisplayDataWidget createState() => _DisplayDataWidget();
 }
 
-class _DisplayDataWidgetState extends State<DisplayDataWidget> {
+class _DisplayDataWidget extends State<DisplayDataWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
