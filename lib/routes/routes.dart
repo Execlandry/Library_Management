@@ -2,14 +2,14 @@ import 'package:get/get.dart';
 import 'package:library_management/landing.dart';
 
 const OverViewPageRoute = "Overview";
-const DriversPageRoute = "Drivers";
-const ClientsPageRoute = "Clients";
+const AddBooksRoute = "Add Books";
+const StudentsPageRoute = "All Students";
 const AuthenticationPageRoute = "Authentication";
 
 List sideMenuItems = [
   OverViewPageRoute,
-  DriversPageRoute,
-  ClientsPageRoute,
+  AddBooksRoute,
+  StudentsPageRoute,
   AuthenticationPageRoute,
 ];
 

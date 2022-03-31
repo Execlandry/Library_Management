@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:library_management/common/app_colors.dart';
-import 'package:library_management/helpers/responsive.dart';
+import 'package:library_management/helpers/screen_helper/responsive.dart';
 import 'package:library_management/pages/dashboard/Entrypoint/sidebar_menu.dart';
-import 'package:library_management/helpers/large_screen.dart';
-import 'package:library_management/helpers/small_screen.dart';
+import 'package:library_management/helpers/screen_helper/large_screen.dart';
+import 'package:library_management/helpers/screen_helper/small_screen.dart';
 import 'package:library_management/pages/dashboard/Header/top_nav.dart';
 
 class Landing extends StatefulWidget {

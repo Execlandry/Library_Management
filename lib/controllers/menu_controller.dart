@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/common/app_colors.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Approved_Students/all_approved_student.dart';
 import 'package:library_management/routes/routes.dart';
 
 class MenuController extends GetxController {
@@ -30,10 +31,10 @@ class MenuController extends GetxController {
       case OverViewPageRoute:
         return _customIcon(Icons.trending_up, itemName);
 
-      case DriversPageRoute:
+      case AddBooksRoute:
         return _customIcon(Icons.drive_eta, itemName);
 
-      case ClientsPageRoute:
+      case StudentsPageRoute:
         return _customIcon(Icons.people_alt_outlined, itemName);
 
       case AuthenticationPageRoute:
