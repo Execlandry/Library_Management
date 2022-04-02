@@ -5,8 +5,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
+import 'package:library_management/pages/welcome/Splash.dart';
 import 'package:library_management/routes/routes.dart';
+
 import 'package:library_management/widgets/Refresh/liquid-pull.dart';
+import 'pages/welcome/Splash.dart';
+
 
 void main() {
   Get.put(MenuController());
@@ -23,6 +27,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'LibMe',
       debugShowCheckedModeBanner: false,
+      home: Splash(),
       theme: ThemeData.dark().copyWith(
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
