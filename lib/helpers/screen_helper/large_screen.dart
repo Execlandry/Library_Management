@@ -18,7 +18,9 @@ class LargeScreen extends StatelessWidget {
         Expanded(
             //flex tells how much a container should be in width
             flex: 5,
-            child: localNavigator()),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: localNavigator())),
       ],
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/helpers/screen_helper/responsive.dart';
 import 'package:library_management/pages/dashboard/Entrypoint/sidebar_menu.dart';
 import 'package:library_management/helpers/screen_helper/large_screen.dart';
@@ -18,14 +17,14 @@ class _LandingState extends State<Landing> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
-        backgroundColor: AppColor.light,
+        extendBodyBehindAppBar: true,
         drawer: Drawer(
           child: SideBar(),
         ),
         appBar: topNavigationBar(context, scaffoldKey),
         // ignore: prefer_const_constructors
         body: SafeArea(
-          child: const ResponsiveWidget(
+          child: ResponsiveWidget(
             largeScreen: LargeScreen(),
             smallScreen: SmallScreen(),
             mediumScreen: LargeScreen(),

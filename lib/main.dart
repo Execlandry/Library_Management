@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
+import 'package:library_management/landing.dart';
 import 'package:library_management/routes/routes.dart';
 
 void main() {
@@ -20,14 +22,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'LibMe',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
+      title: "Dashboard",
+      theme: ThemeData(
+          scaffoldBackgroundColor: AppColor.light,
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
-          pageTransitionsTheme: const PageTransitionsTheme(builders: {
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
           }),
           primaryColor: Colors.blue),
       initialRoute: AppRoutes.dashboard,
