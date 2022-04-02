@@ -41,6 +41,7 @@ dependencies:
   provider: ^5.0.0
   table_calendar: ^3.0.4
   get: ^4.6.1
+  liquid_pull_to_refresh: ^3.0.0
 
 dev_dependencies:
   flutter_test:
