@@ -10,10 +10,10 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               children: [
                 Container(
                   padding: const EdgeInsets.only(left: 14),
-                  // child: Image.asset(
-                  //   "assets/user1.png",
-                  //   width: 28,
-                  // ),
+                  child: Image.asset(
+                    "assets/user1.png",
+                    width: 28,
+                  ),
                 ),
               ],
             )
@@ -29,7 +29,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             child: CustomText(
           text: "Dashboard",
           color: AppColor.lightGrey,
-          size: 20,
+          size: 18,
           weight: FontWeight.bold,
         )),
         Expanded(
@@ -57,7 +57,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               child: Container(
                 width: 12,
                 height: 12,
-                padding: const EdgeInsets.all(4),
+                padding: EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(color: AppColor.light, width: 2),
@@ -71,7 +71,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           height: 22,
           color: AppColor.lightGrey,
         ),
-        const SizedBox(
+        SizedBox(
           width: 24,
         ),
         CustomText(
@@ -80,7 +80,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           weight: FontWeight.bold,
           size: 16,
         ),
-        const SizedBox(
+        SizedBox(
           width: 16,
         ),
         Container(
@@ -101,5 +101,5 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       iconTheme: IconThemeData(
         color: AppColor.dark,
       ),
-      backgroundColor: AppColor.light,
+      backgroundColor: Colors.transparent,
     );
