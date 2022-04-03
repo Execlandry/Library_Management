@@ -7,7 +7,9 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
 import 'package:library_management/landing.dart';
+import 'package:library_management/pages/welcome/Splash.dart';
 import 'package:library_management/routes/routes.dart';
+import 'pages/welcome/Splash.dart';
 
 void main() {
   Get.put(MenuController());
@@ -22,15 +24,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'LibMe',
       debugShowCheckedModeBanner: false,
-      title: "Dashboard",
-      theme: ThemeData(
-          scaffoldBackgroundColor: AppColor.light,
+      theme: ThemeData.dark().copyWith(
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
+          pageTransitionsTheme: const PageTransitionsTheme(builders: {
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           }),
           primaryColor: Colors.blue),
       initialRoute: AppRoutes.dashboard,

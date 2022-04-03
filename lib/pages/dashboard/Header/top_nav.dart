@@ -26,12 +26,13 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       elevation: 0,
       title: Row(children: [
         Visibility(
+            visible: !ResponsiveWidget.isSmallScreen(context),
             child: CustomText(
-          text: "Dashboard",
-          color: AppColor.lightGrey,
-          size: 18,
-          weight: FontWeight.bold,
-        )),
+              text: "Dashboard",
+              color: AppColor.lightGrey,
+              size: 18,
+              weight: FontWeight.bold,
+            )),
         Expanded(
           child: Container(),
         ),
