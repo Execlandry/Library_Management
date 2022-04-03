@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+
+class LiquidRefresh extends StatefulWidget {
+  const LiquidRefresh({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _LiquidRefresh createState() => _LiquidRefresh();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LiquidRefresh extends State<LiquidRefresh> {
   Future<void> _handleRefresh() async {
     return await Future.delayed(Duration(seconds: 1));
   }

@@ -5,12 +5,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
-import 'package:library_management/pages/welcome/Splash.dart';
+import 'package:library_management/landing.dart';
+import 'package:library_management/pages/IconSplash/Splash.dart';
 import 'package:library_management/routes/routes.dart';
 
-import 'package:library_management/widgets/Refresh/liquid-pull.dart';
-import 'pages/welcome/Splash.dart';
+import 'package:library_management/widgets/Refresh/liquid_pull.dart';
+import 'pages/IconSplash/Splash.dart';
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
   Get.put(MenuController());
@@ -27,7 +29,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'LibMe',
       debugShowCheckedModeBanner: false,
-      home: Splash(),
       theme: ThemeData.dark().copyWith(
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
@@ -36,9 +37,15 @@ class MyApp extends StatelessWidget {
             TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           }),
           primaryColor: Colors.blue),
-      initialRoute: AppRoutes.dashboard,
-      getPages: AppRoutes.routes,
+      // initialRoute: AppRoutes.splash,
+      // getPages: AppRoutes.routes,
+      home: AnimatedSplashScreen(
+          splash: Icons.home,
+          duration: 3000,
+          splashTransition: SplashTransition.scaleTransition,
+          backgroundColor: Color.fromARGB(255, 126, 191, 245),
+          
+          nextScreen: Landing()),
     );
   }
 }
-
