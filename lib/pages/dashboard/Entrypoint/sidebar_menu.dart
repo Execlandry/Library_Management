@@ -31,7 +31,10 @@ class SideBar extends StatelessWidget {
                     SizedBox(width: _width / 48),
                     Padding(
                       padding: EdgeInsets.only(right: 12),
-                      child: Image.asset("assets/user1.png"),
+                      child: Image.asset(
+                        "assets/user1.png",
+                        width: 20,
+                      ),
                     ),
                     Flexible(
                         child: CustomText(

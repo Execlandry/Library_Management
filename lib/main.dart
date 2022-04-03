@@ -28,15 +28,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'LibMe',
       debugShowCheckedModeBanner: false,
-      title: "Dashboard",
       theme: ThemeData(
           scaffoldBackgroundColor: AppColor.light,
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
+          pageTransitionsTheme: const PageTransitionsTheme(builders: {
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           }),
           primaryColor: Colors.blue),
       // initialRoute: AppRoutes.splash,
