@@ -7,12 +7,6 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
 import 'package:library_management/landing.dart';
-import 'package:library_management/pages/IconSplash/Splash.dart';
-import 'package:library_management/routes/routes.dart';
-
-import 'package:library_management/widgets/Refresh/liquid_pull.dart';
-import 'pages/IconSplash/Splash.dart';
-
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
