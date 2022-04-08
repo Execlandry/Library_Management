@@ -8,6 +8,9 @@ import 'package:library_management/controllers/LocalNavigation/navigation_contro
 import 'package:library_management/controllers/menu_controller.dart';
 import 'package:library_management/landing.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
+import 'package:library_management/routes/routes.dart';
 
 void main() {
   Get.put(MenuController());
@@ -22,6 +25,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: AuthenticationPageRoute,
+      unknownRoute: GetPage(
+          name: "/not-found",
+          page: () => PageNotFound(),
+          transition: Transition.fadeIn),
+      getPages: AppRoutes.routes,
+
       title: 'LibMe',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -33,14 +43,14 @@ class MyApp extends StatelessWidget {
             TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           }),
           primaryColor: Colors.blue),
-      // initialRoute: AppRoutes.splash,
+      // initialRoute: AppRoutes.dashboard,
       // getPages: AppRoutes.routes,
-      home: AnimatedSplashScreen(
-          splash: Icons.home,
-          duration: 3000,
-          splashTransition: SplashTransition.scaleTransition,
-          backgroundColor: Color.fromARGB(255, 126, 191, 245),
-          nextScreen: Landing()),
+      // home: AnimatedSplashScreen(
+      //     splash: Icons.home,
+      //     duration: 3000,
+      //     splashTransition: SplashTransition.scaleTransition,
+      //     backgroundColor: Color.fromARGB(255, 126, 191, 245),
+      //     nextScreen: Landing()),
     );
   }
 }

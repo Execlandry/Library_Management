@@ -1,38 +1,47 @@
 import 'package:get/get.dart';
 import 'package:library_management/landing.dart';
 import 'package:library_management/pages/IconSplash/Splash.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
 
-const OverViewPageRoute = "Overview";
-const AddBooksRoute = "Add Books";
-const StudentsPageRoute = "All Students";
-const AuthenticationPageRoute = "Authentication";
+const RootRoute = "/";
 
-List sideMenuItems = [
-  OverViewPageRoute,
-  AddBooksRoute,
-  StudentsPageRoute,
-  AuthenticationPageRoute,
+const OverViewPageDisplayName = "Overview";
+const OverViewPageRoute = "/overview";
+
+const AddBooksDisplayName = "Add Books";
+const AddBooksRoute = "/addBooks";
+
+const StudentsPageDisplayName = "All Students";
+const StudentsPageRoute = "/allStudents";
+
+const AuthenticationPageDisplayName = "Log Out";
+const AuthenticationPageRoute = "/auth";
+
+class MenuItems {
+  final String name;
+  final String route;
+
+  MenuItems(this.name, this.route);
+}
+
+List<MenuItems> sideMenuItems = [
+  MenuItems(OverViewPageDisplayName, OverViewPageRoute),
+  MenuItems(AddBooksDisplayName, AddBooksRoute),
+  MenuItems(StudentsPageDisplayName, StudentsPageRoute),
+  MenuItems(AuthenticationPageDisplayName, AuthenticationPageRoute),
 ];
 
 class AppRoutes {
-  static const dashboard = Routes.dashboard;
-  static const splash = Routes.splash;
-
-// static const register = Routes.register;
-// static const login = Routes.login;
+  static const dashboard = Routes.RootRoute;
+  static const splash = Routes.AuthenticationPageRoute;
 
   static final routes = [
-    GetPage(name: Routes.dashboard, page: () => const Landing()),
-    GetPage(name: Routes.splash, page: () => const Splash()),
-    // GetPage(name: Routes.register, page: () =>  RegisterView()),
-    // GetPage(name: Routes.login, page: () =>  LoginView()),
+    GetPage(name: RootRoute, page: () => Landing()),
+    GetPage(name: AuthenticationPageRoute, page: () => AuthPage()),
   ];
 }
 
 class Routes {
-  static const dashboard = '/dashboard';
-  static const splash = '/splash';
-
-  // static const register = '/register';
-  // static const login = '/login';
+  static const RootRoute = "/";
+  static const AuthenticationPageRoute = "/auth";
 }

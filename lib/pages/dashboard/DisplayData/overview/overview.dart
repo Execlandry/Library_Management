@@ -4,6 +4,9 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/pages/dashboard/DisplayData/overview/Overview_Screens/overview_cards_large.dart';
 import 'package:library_management/pages/dashboard/DisplayData/overview/Overview_Screens/overview_cards_medium.dart';
 import 'package:library_management/pages/dashboard/DisplayData/overview/Overview_Screens/overview_cards_small.dart';
+import 'package:library_management/pages/dashboard/DisplayData/overview/charts_screen/chart_screens/revenue_section_large.dart';
+import 'package:library_management/pages/dashboard/DisplayData/overview/charts_screen/chart_screens/revenue_section_small.dart';
+import 'package:library_management/pages/dashboard/DisplayData/overview/charts_screen/display_data_widget.dart';
 import 'package:library_management/widgets/CustomText/custom_text.dart';
 
 import '../../../../controllers/controller.dart';
@@ -26,7 +29,7 @@ class _OverViewPage extends State<OverViewPage> {
             children: [
               Container(
                 margin: EdgeInsets.only(
-                    top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
+                    top: ResponsiveWidget.isSmallScreen(context) ? 6 : 6),
                 child: CustomText(
                     text: menuController.activeItem.value,
                     size: 24,
@@ -35,6 +38,9 @@ class _OverViewPage extends State<OverViewPage> {
               ),
             ],
           ),
+        ),
+        SizedBox(
+          height: 20,
         ),
         Expanded(
           child: ListView(
@@ -46,7 +52,15 @@ class _OverViewPage extends State<OverViewPage> {
                 else
                   OverviewCardsLargeScreen()
               else
-                OverViewCardsSmallScreen()
+                OverViewCardsSmallScreen(),
+
+              //deciding based on screens what to display
+              if (!ResponsiveWidget.isSmallScreen(context))
+                RevenueSectionLarge()
+              else
+                RevenueSectionSmall(),
+
+              DisplayDataWidget(),
             ],
           ),
         ),

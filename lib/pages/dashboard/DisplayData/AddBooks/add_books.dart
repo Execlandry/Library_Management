@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/common/app_colors.dart';
-import 'package:library_management/pages/dashboard/DisplayData/Approved_Students/widget/table_student.dart';
+import 'package:library_management/pages/dashboard/DisplayData/AddBooks/widgets/table_addbook.dart';
 import 'package:library_management/widgets/CustomText/custom_text.dart';
 
 import '../../../../controllers/controller.dart';
 import '../../../../helpers/screen_helper/responsive.dart';
 
-class AllApprovedStudentsPage extends StatelessWidget {
-  const AllApprovedStudentsPage({Key? key}) : super(key: key);
+class AddBooksPage extends StatelessWidget {
+  const AddBooksPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class AllApprovedStudentsPage extends StatelessWidget {
         ),
         Expanded(
           child: ListView(
-            children: [StudentsTable()],
+            children: [AddBooksTable()],
           ),
         ),
       ],
