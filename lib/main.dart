@@ -7,9 +7,9 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
 import 'package:library_management/landing.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/routes/routes.dart';
 
 void main() {
@@ -27,12 +27,20 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: AuthenticationPageRoute,
       unknownRoute: GetPage(
-          name: "/not-found",
+          name: '/not-found',
           page: () => PageNotFound(),
           transition: Transition.fadeIn),
-      getPages: AppRoutes.routes,
+      getPages: [
+        GetPage(
+            name: RootRoute,
+            page: () {
+              return Landing();
+            }),
+        GetPage(name: AuthenticationPageRoute, page: () => AuthPage()),
+        GetPage(name: RegisterRoute, page: () => RegisterPage()),
+      ],
 
-      title: 'LibMe',
+      title: 'Library',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: AppColor.light,

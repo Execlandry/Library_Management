@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
-class AuthPage extends StatelessWidget {
-  const AuthPage({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +32,7 @@ class AuthPage extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text("Login",
+                  Text("Register",
                       style: GoogleFonts.roboto(
                           fontSize: 30, fontWeight: FontWeight.bold)),
                 ],
@@ -44,7 +43,7 @@ class AuthPage extends StatelessWidget {
               Row(
                 children: [
                   CustomText(
-                    text: "Welcome back to the admin panel.",
+                    text: "Register Me!",
                     color: AppColor.lightGrey,
                   ),
                 ],
@@ -73,6 +72,17 @@ class AuthPage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                    labelText: "Confirm Password",
+                    hintText: "123",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20))),
+              ),
+              SizedBox(
+                height: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -93,6 +103,26 @@ class AuthPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
+                  // Get.offAllNamed(RootRoute);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColor.active,
+                      borderRadius: BorderRadius.circular(20)),
+                  alignment: Alignment.center,
+                  width: double.maxFinite,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: CustomText(
+                    text: "Register",
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              InkWell(
+                onTap: () {
                   Get.offAllNamed(RootRoute);
                 },
                 child: Container(
@@ -104,28 +134,6 @@ class AuthPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 16),
                   child: CustomText(
                     text: "Login",
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.offAllNamed(RegisterRoute);
-
-                  // GetPage(name: RegisterRoute, page: () => RegisterPage());
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColor.active,
-                      borderRadius: BorderRadius.circular(20)),
-                  alignment: Alignment.center,
-                  width: double.maxFinite,
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: CustomText(
-                    text: "Register",
                     color: Colors.white,
                   ),
                 ),
