@@ -10,6 +10,7 @@ import 'package:library_management/landing.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
+
 import 'package:library_management/routes/routes.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       unknownRoute: GetPage(
           name: "/not-found",
           page: () => PageNotFound(),
-          transition: Transition.fadeIn),
+         transition: Transition.fadeIn),
       getPages: AppRoutes.routes,
 
       title: 'LibMe',
@@ -38,11 +39,11 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColor.light,
           textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.black),
-          pageTransitionsTheme: const PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+           pageTransitionsTheme: const PageTransitionsTheme(builders: {
+           TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+           TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           }),
-          primaryColor: Colors.blue),
+         primaryColor: Colors.blue),
       // initialRoute: AppRoutes.dashboard,
       // getPages: AppRoutes.routes,
       // home: AnimatedSplashScreen(
@@ -54,3 +55,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
