@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:library_management/pages/intro/introPage1.dart';
 import 'package:library_management/pages/intro/introPage2.dart';
 import 'package:library_management/pages/intro/introPage3.dart';
-import 'package:library_management/widgets/Refresh/liquid-pull.dart';
+import 'package:library_management/widgets/Animation/anime.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../landing.dart';
 
 class  WelcomePage extends StatefulWidget{
   const WelcomePage({Key?key}) : super(key: key);
@@ -12,6 +15,9 @@ class  WelcomePage extends StatefulWidget{
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  PageController _controller=PageController();
+
+  bool onLastPage = false;
   @override 
   Widget build(BuildContext context){
     return Scaffold(
@@ -19,6 +25,12 @@ class _WelcomePageState extends State<WelcomePage> {
         children: [
           PageView(
             controller: _controller,
+            onPageChanged: (index){
+              setState(() {
+                onLastPage= (index==2);
+              });
+
+            },
             children: [
           IntroPage1(),
           IntroPage2(),
@@ -49,7 +61,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                    return HomePage()
+                    return Landing();
                   },
                  )
                 );
