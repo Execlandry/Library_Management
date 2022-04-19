@@ -18,13 +18,13 @@ class _LandingState extends State<Landing> {
     return Scaffold(
         key: scaffoldKey,
         extendBodyBehindAppBar: true,
-        drawer: Drawer(
+        drawer: const Drawer(
           child: SideBar(),
         ),
         appBar: topNavigationBar(context, scaffoldKey),
         // ignore: prefer_const_constructors
         body: SafeArea(
-          child: ResponsiveWidget(
+          child: const ResponsiveWidget(
             largeScreen: LargeScreen(),
             smallScreen: SmallScreen(),
             mediumScreen: LargeScreen(),

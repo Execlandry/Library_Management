@@ -7,8 +7,25 @@ import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +69,10 @@ class AuthPage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              TextField(
+              TextFormField(
+                controller: _emailController,
+                validator: (value) =>
+                    value!.isEmpty ? "Please Enter Valid Email" : null,
                 decoration: InputDecoration(
                     labelText: "Email",
                     hintText: "abc@domain.com",
@@ -64,6 +84,7 @@ class AuthPage extends StatelessWidget {
               ),
               TextField(
                 obscureText: true,
+                controller: _passwordController,
                 decoration: InputDecoration(
                     labelText: "Password",
                     hintText: "123",

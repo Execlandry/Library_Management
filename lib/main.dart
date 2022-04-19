@@ -6,13 +6,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
+import 'package:library_management/controllers/popularBook/popular_book_controller.dart';
 import 'package:library_management/landing.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/routes/routes.dart';
+import 'helpers/dependencies/dependencies.dart' as dep;
 
-void main() {
+Future<void> main() async {
+  //This will make sure that all dependencies are loaded properly and wait until loaded
+  WidgetsFlutterBinding.ensureInitialized();
+  await dep.init();
   Get.put(MenuController());
   Get.put(NavigationController());
 
@@ -24,20 +29,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularBookController>().getPopularBookList();
+    
     return GetMaterialApp(
       initialRoute: AuthenticationPageRoute,
       unknownRoute: GetPage(
           name: '/not-found',
-          page: () => PageNotFound(),
+          page: () => const PageNotFound(),
           transition: Transition.fadeIn),
       getPages: [
         GetPage(
             name: RootRoute,
             page: () {
-              return Landing();
+              return const Landing();
             }),
-        GetPage(name: AuthenticationPageRoute, page: () => AuthPage()),
-        GetPage(name: RegisterRoute, page: () => RegisterPage()),
+        GetPage(name: AuthenticationPageRoute, page: () => const AuthPage()),
+        GetPage(name: RegisterRoute, page: () => const RegisterPage()),
       ],
 
       title: 'Library',

@@ -4,6 +4,7 @@ import '../../../../../common/app_colors.dart';
 import '../../../../../widgets/CustomText/custom_text.dart';
 
 /// Example without datasource
+// ignore: use_key_in_widget_constructors
 class StudentsTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,30 +14,31 @@ class StudentsTable extends StatelessWidget {
         border: Border.all(color: AppColor.active.withOpacity(.4), width: .5),
         boxShadow: [
           BoxShadow(
-              offset: Offset(0, 6),
+              offset: const Offset(0, 6),
               color: AppColor.lightGrey.withOpacity(.1),
               blurRadius: 12)
         ],
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.all(16),
-      margin: EdgeInsets.only(bottom: 30),
+      margin: const EdgeInsets.only(bottom: 30),
       child: DataTable2(
           columnSpacing: 12,
           horizontalMargin: 12,
           minWidth: 600,
+          // ignore: prefer_const_literals_to_create_immutables
           columns: [
-            DataColumn2(
+            const DataColumn2(
               label: Text("Name"),
               size: ColumnSize.L,
             ),
-            DataColumn(
+            const DataColumn(
               label: Text('Location'),
             ),
-            DataColumn(
+            const DataColumn(
               label: Text('Rating'),
             ),
-            DataColumn(
+            const DataColumn(
               label: Text('Action'),
             ),
           ],
@@ -54,12 +56,12 @@ class StudentsTable extends StatelessWidget {
                     DataCell(Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star,
                           color: Colors.deepOrange,
                           size: 18,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         CustomText(
@@ -74,8 +76,8 @@ class StudentsTable extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: AppColor.active, width: .5),
                         ),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
                         child: CustomText(
                           text: "Block",
                           color: AppColor.active.withOpacity(.7),

@@ -15,6 +15,7 @@ class PageNotFound extends StatelessWidget {
             "assets/images/error.png",
             width: 350,
           ),
+          // ignore: prefer_const_constructors
           SizedBox(
             height: 10,
           ),

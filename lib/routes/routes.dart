@@ -32,8 +32,8 @@ List<MenuItems> sideMenuItems = [
   MenuItems(OverViewPageDisplayName, OverViewPageRoute),
   MenuItems(AddBooksDisplayName, AddBooksRoute),
   MenuItems(StudentsPageDisplayName, StudentsPageRoute),
-  MenuItems(AuthenticationPageDisplayName, AuthenticationPageRoute),
   MenuItems(RegisterPageDisplayName, RegisterRoute),
+  MenuItems(AuthenticationPageDisplayName, AuthenticationPageRoute),
 ];
 
 // class AppRoutes {

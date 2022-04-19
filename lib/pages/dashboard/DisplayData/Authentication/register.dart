@@ -6,8 +6,18 @@ import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _passController = TextEditingController();
+  TextEditingController _repassController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +62,8 @@ class RegisterPage extends StatelessWidget {
                 height: 15,
               ),
               TextField(
+                controller: _emailController,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     labelText: "Email",
                     hintText: "abc@domain.com",
