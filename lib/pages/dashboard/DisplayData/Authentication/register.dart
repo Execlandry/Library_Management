@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:library_management/landing.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
@@ -103,7 +104,7 @@ class RegisterPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  // Get.offAllNamed(RootRoute);
+                  Get.to(Landing());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -123,7 +124,7 @@ class RegisterPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(RootRoute);
+                  Get.offAllNamed(AppRoutes.rootRoute);
                 },
                 child: Container(
                   decoration: BoxDecoration(

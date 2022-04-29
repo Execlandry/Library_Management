@@ -45,6 +45,8 @@ dependencies:
   lottie: ^1.2.2
   shared_preferences: ^2.0.13
   http: ^0.13.4
+  animated_splash_screen:
+
   
 
 dev_dependencies:

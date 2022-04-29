@@ -1,25 +1,22 @@
 import 'package:get/get.dart';
 import 'package:library_management/landing.dart';
-import 'package:library_management/pages/IconSplash/Splash.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
+import 'package:library_management/pages/userUi/home_page.dart';
 
-const RootRoute = "/";
 
 const RegisterPageDisplayName = "Register";
-const RegisterRoute = "/register";
 
 const OverViewPageDisplayName = "Overview";
-const OverViewPageRoute = "/overview";
+
 
 const AddBooksDisplayName = "Add Books";
-const AddBooksRoute = "/addBooks";
 
 const StudentsPageDisplayName = "All Students";
-const StudentsPageRoute = "/allStudents";
 
 const AuthenticationPageDisplayName = "Log Out";
-const AuthenticationPageRoute = "/auth";
+// const AuthenticationPageRoute = "/auth";
 
 class MenuItems {
   final String name;
@@ -29,28 +26,43 @@ class MenuItems {
 }
 
 List<MenuItems> sideMenuItems = [
-  MenuItems(OverViewPageDisplayName, OverViewPageRoute),
-  MenuItems(AddBooksDisplayName, AddBooksRoute),
-  MenuItems(StudentsPageDisplayName, StudentsPageRoute),
-  MenuItems(AuthenticationPageDisplayName, AuthenticationPageRoute),
-  MenuItems(RegisterPageDisplayName, RegisterRoute),
+  MenuItems(OverViewPageDisplayName, Routes.overViewPageRoute),
+  MenuItems(AddBooksDisplayName, Routes.addBooksRoute),
+  MenuItems(StudentsPageDisplayName, Routes.studentsPageRoute),
+  MenuItems(AuthenticationPageDisplayName, Routes.authenticationPageRoute),
+  MenuItems(RegisterPageDisplayName, Routes.registerRoute),
 ];
 
-// class AppRoutes {
-//   static const dashboard = Routes.RootRoute;
-//   static const splash = Routes.AuthenticationPageRoute;
-//   static const NotFound = Routes.NotFound;
+class AppRoutes {
+  static const unknownRoute = Routes.unknownRoute;
+  static const rootRoute = Routes.rootRoute;
+  static const homeRoute = Routes.homeRoute;
+  static const authenticationPageRoute = Routes.authenticationPageRoute;
+
+  static const registerRoute = Routes.registerRoute;
 
 
-//   static final routes = [
-//     GetPage(name: RootRoute, page: () => Landing()),
-//     GetPage(name: AuthenticationPageRoute, page: () => AuthPage()),
-//     GetPage(name: NotFound, page: () => PageNotFound()),
-//   ];
-// }
+  static final routes = [ 
+        GetPage(name: unknownRoute, page: () => PageNotFound()),
+        GetPage(name: rootRoute,page: () => Landing()),
+        GetPage(name: homeRoute,page: () => HomePage()),
 
-// class Routes {
-//   static const RootRoute = "/";
-//   static const AuthenticationPageRoute = "/auth";
-//   static const NotFound = "/not-found";
-// }
+        GetPage(name: authenticationPageRoute, page: () => AuthPage()),
+        GetPage(name: registerRoute, page: () => RegisterPage()),
+  ];
+}
+
+class Routes {
+
+  static const unknownRoute = "/not-found";
+  static const rootRoute = "/";
+  static const homeRoute = "/home";
+  static const authenticationPageRoute = "/auth";
+  static const overViewPageRoute = "/overview";
+  static const addBooksRoute = "/books";
+  static const studentsPageRoute = "/students";
+  static const registerRoute = "/register";
+}
+
+
+

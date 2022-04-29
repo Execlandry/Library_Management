@@ -6,6 +6,6 @@ import '../../routes/routes.dart';
 
 Navigator localNavigator() => Navigator(
   key: navigationController.navigationKey,
-  initialRoute: OverViewPageRoute,
+  initialRoute: Routes.overViewPageRoute,
   onGenerateRoute: generateRoute,
 );

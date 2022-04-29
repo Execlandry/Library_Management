@@ -59,9 +59,10 @@ class SideBar extends StatelessWidget {
                 .map((item) => SideMenuItem(
                       itemName: item.name,
                       onTap: () {
-                        if (item.route == AuthenticationPageRoute) {
-                         menuController.changeActiveitemTo(OverViewPageDisplayName);
-                         Get.offAllNamed(AuthenticationPageRoute);
+                        if (item.route == Routes.authenticationPageRoute) {
+                          menuController
+                              .changeActiveitemTo(OverViewPageDisplayName);
+                          Get.offAllNamed(Routes.authenticationPageRoute);
                         }
 
                         if (!menuController.isActive(item.name)) {

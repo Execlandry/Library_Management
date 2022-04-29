@@ -93,7 +93,7 @@ class AuthPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(RootRoute);
+                  Get.offAllNamed(AppRoutes.rootRoute);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -113,7 +113,7 @@ class AuthPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(RegisterRoute);
+                  Get.offAllNamed(AppRoutes.registerRoute);
 
                   // GetPage(name: RegisterRoute, page: () => RegisterPage());
                 },
