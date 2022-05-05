@@ -38,7 +38,7 @@ class _WelcomePageState extends State<WelcomePage> {
         ],
       ),
       Container(
-        alignment: Alignment(0, 0.75),
+        alignment: Alignment(0, 0.85),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -51,7 +51,17 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
 
             //dotted indicator
-            SmoothPageIndicator(controller: _controller, count: 3),
+            SmoothPageIndicator(
+              controller: _controller, 
+              count: 3,
+              effect: JumpingDotEffect(
+                activeDotColor: Color.fromARGB(255, 3, 71, 62),
+                dotColor: Color.fromARGB(255, 229, 235, 234),
+                spacing: 24,
+
+              ),
+              
+              ),
 
             //next or done
             onLastPage
