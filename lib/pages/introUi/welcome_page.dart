@@ -65,7 +65,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 onLastPage
                     ? GestureDetector(
                         onTap: () {
-                          Get.offAllNamed(AppRoutes.homeRoute);
+                          Get.offAllNamed(AppRoutes.authenticationPageRoute);
                         },
                         child: Text('done'),
                       )

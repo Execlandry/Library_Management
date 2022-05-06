@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:library_management/common/app_colors.dart';
-import 'package:library_management/utils/auth_helper.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
 class PageNotFound extends StatefulWidget {
@@ -12,7 +10,7 @@ class PageNotFound extends StatefulWidget {
 }
 
 class _PageNotFoundState extends State<PageNotFound> {
-  final user = FirebaseAuth.instance.currentUser!;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

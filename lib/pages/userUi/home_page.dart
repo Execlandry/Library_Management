@@ -2,23 +2,22 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:library_management/routes/routes.dart';
-import 'package:library_management/widgets/SliderCards/slider_body.dart';
+import 'package:library_management/controllers/FirebaseController/authController.dart';
 
 import '../../common/app_colors.dart';
 import '../../utils/auth_helper.dart';
 import '../../widgets/CustomText/custom_text.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  String? email;
+  HomePage({Key? key, required this.email}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
+  // State<HomePage> createState() => _HomePageState();
 
-class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
+
+// class _HomePageState extends State<HomePage> {
+  // final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +95,11 @@ class _HomePageState extends State<HomePage> {
               Container(
                 child: Column(
                   children: [
-                    Text("Signed in as:" + user.email!),
+                    Text(email!),
                     SizedBox(height: 10),
                     InkWell(
                       onTap: () {
-                        AuthHelper.logOut();
+                        AuthController.instance.logOut();
                       },
                       child: Container(
                         decoration: BoxDecoration(

@@ -1,13 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:library_management/utils/auth_helper.dart';
-import 'package:library_management/widgets/CustomMessage/custom_message.dart';
-import 'package:library_management/widgets/Refresh/liquid_pull.dart';
+import 'package:library_management/controllers/FirebaseController/authController.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
+import '../../../../widgets/CustomMessage/custom_message.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -20,66 +18,60 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController _passController = TextEditingController();
-    TextEditingController _repassController = TextEditingController();
-    TextEditingController _emailController = TextEditingController();
-    // TextEditingController _nameController = TextEditingController();
+    var emailController = TextEditingController();
+    var passController = TextEditingController();
+    var repassController = TextEditingController();
 
-    // String name = _nameController.text.trim();
-    String email = _emailController.text.trim();
-    String password = _passController.text.trim();
-    String cPassword = _repassController.text.trim();
-
-    // if (name.isEmpty) {
-    // showCustomSnackBar("Type in your Name", title: "Name Empty!");
-    // }
-    if (email.isEmpty) {
-      showCustomSnackBar("Type in your Email", title: "Email Empty!");
-    } else if (!GetUtils.isEmail(email)) {
-      showCustomSnackBar("Type in your valid Email", title: "Email");
-    } else if (password.isEmpty) {
-      showCustomSnackBar("Type in your Password", title: "Password Empty!");
-    } else if (password.length < 6) {
-      showCustomSnackBar("Password cannot be less than six characters",
-          title: "Password");
-    } else if (cPassword.isEmpty) {
-      showCustomSnackBar("Type in your Password again",
-          title: "Confirmation Password Empty!");
+    bool registerValidate() {
+      // if (name.isEmpty) {
+      // showCustomSnackBar("Type in your Name", title: "Name Empty!");
+      // }
+      if (emailController.text.trim().isEmpty) {
+        showCustomSnackBar("Type in your Email", title: "Email Empty!");
+      } else if (!GetUtils.isEmail(emailController.text.trim())) {
+        showCustomSnackBar("Type in your valid Email", title: "Invalid Email");
+      } else if (passController.text.trim().isEmpty) {
+        showCustomSnackBar("Type in your Password", title: "Password Empty!");
+      } else if (passController.text.trim().length < 6) {
+        showCustomSnackBar("Password cannot be less than six characters",
+            title: "Password to short!");
+      } else if (repassController.text.trim().isEmpty) {
+        showCustomSnackBar("Type in your Password again",
+            title: "Confirmation Password Empty!");
+      }
+      //  else {
+      //   showCustomSnackBar(
+      //     "Email has already been taken",
+      //     title: "Account creation failed",
+      //   );
+      // }
+      return true;
     }
 
     bool passwordConfirmed() {
-      if (password == cPassword) {
+      if (passController.text.trim() == repassController.text.trim()) {
         return true;
       } else {
-        showCustomSnackBar("Password does not match",
-            title: "Confirmation Password");
         return false;
       }
-    }
-
-    Future signUp() async {
-      if (passwordConfirmed()) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: _emailController.text.trim(),
-            password: _passController.text.trim());
-      }
-      Get.toNamed(AppRoutes.homeRoute);
     }
 
     @override
     void dispose() {
       // _nameController.dispose();
-      _emailController.dispose();
-      _passController.dispose();
-      _repassController.dispose();
+      emailController.dispose();
+      passController.dispose();
+      repassController.dispose();
 
       // TODO: implement dispose
       super.dispose();
     }
 
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: false,
         body: Center(
+      child: SingleChildScrollView(
+        child: Center(
           child: Container(
             constraints: BoxConstraints(maxWidth: 400),
             padding: EdgeInsets.all(24),
@@ -133,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: _emailController,
+                  controller: emailController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       labelText: "Email",
@@ -146,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: _passController,
+                  controller: passController,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Password",
@@ -159,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: _repassController,
+                  controller: repassController,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Confirm Password",
@@ -190,7 +182,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 InkWell(
-                  onTap: signUp,
+                  onTap: () {
+                    if (registerValidate() && passwordConfirmed()) {
+                      AuthController.instance.register(
+                          emailController.text.trim(),
+                          passController.text.trim());
+                    }
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: AppColor.active,
@@ -237,6 +235,8 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
             ),
           ),
-        ));
+        ),
+      ),
+    ));
   }
 }
