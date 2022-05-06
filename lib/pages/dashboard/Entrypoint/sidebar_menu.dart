@@ -55,20 +55,20 @@ class SideBar extends StatelessWidget {
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: sideMenuItems
+            children: sideMenuItemRoute
                 .map((item) => SideMenuItem(
                       itemName: item.name,
                       onTap: () {
                         if (item.route == Routes.authenticationPageRoute) {
-                          menuController
-                              .changeActiveitemTo(OverViewPageDisplayName);
                           Get.offAllNamed(Routes.authenticationPageRoute);
+                          menuController.changeActiveitemTo(OverViewPageDisplayName);
                         }
 
                         if (!menuController.isActive(item.name)) {
                           menuController.changeActiveitemTo(item.name);
-                          if (ResponsiveWidget.isSmallScreen(context))
+                          if (ResponsiveWidget.isSmallScreen(context)){
                             Get.back();
+                            }
                           navigationController.navigateTo(item.route);
                         }
                       },

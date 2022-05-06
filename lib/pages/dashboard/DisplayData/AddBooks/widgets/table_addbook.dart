@@ -6,6 +6,8 @@ import '../../../../../widgets/CustomText/custom_text.dart';
 
 /// Example without datasource
 class AddBooksTable extends StatelessWidget {
+  const AddBooksTable({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(

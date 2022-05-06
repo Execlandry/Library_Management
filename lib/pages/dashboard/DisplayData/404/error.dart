@@ -1,10 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:library_management/common/app_colors.dart';
+import 'package:library_management/utils/auth_helper.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
-class PageNotFound extends StatelessWidget {
+class PageNotFound extends StatefulWidget {
   const PageNotFound({Key? key}) : super(key: key);
 
+  @override
+  State<PageNotFound> createState() => _PageNotFoundState();
+}
+
+class _PageNotFoundState extends State<PageNotFound> {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +20,7 @@ class PageNotFound extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            "assets/images/error.png",
+            "assets/error.png",
             width: 350,
           ),
           SizedBox(
@@ -28,7 +36,8 @@ class PageNotFound extends StatelessWidget {
                 color: AppColor.black,
               ),
             ],
-          )
+          ),
+         
         ],
       ),
     );

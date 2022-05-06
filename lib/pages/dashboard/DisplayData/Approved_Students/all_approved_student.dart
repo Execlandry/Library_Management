@@ -19,7 +19,7 @@ class AllApprovedStudentsPage extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.only(
-                    top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
+                    top: ResponsiveWidget.isSmallScreen(context) ? 6 : 6),
                 child: CustomText(
                     text: menuController.activeItem.value,
                     size: 24,
@@ -31,7 +31,9 @@ class AllApprovedStudentsPage extends StatelessWidget {
         ),
         Expanded(
           child: ListView(
-            children: [StudentsTable()],
+            children: [
+              StudentsTable(),
+              Text("hello")],
           ),
         ),
       ],

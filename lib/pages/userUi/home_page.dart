@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/routes/routes.dart';
 import 'package:library_management/widgets/SliderCards/slider_body.dart';
 
 import '../../common/app_colors.dart';
+import '../../utils/auth_helper.dart';
 import '../../widgets/CustomText/custom_text.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final user = FirebaseAuth.instance.currentUser!;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,23 +93,46 @@ class _HomePageState extends State<HomePage> {
               ),
 
               Spacer(),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    Get.offAllNamed(AppRoutes.authenticationPageRoute);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppColor.active,
-                        borderRadius: BorderRadius.circular(20)),
-                    alignment: Alignment.center,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    child: CustomText(
-                      text: "AuthPage",
-                      color: Colors.white,
-                    ),
-                  ),
+              Container(
+                child: Column(
+                  children: [
+                    Text("Signed in as:" + user.email!),
+                    SizedBox(height: 10),
+                    InkWell(
+                      onTap: () {
+                        AuthHelper.logOut();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColor.active,
+                            borderRadius: BorderRadius.circular(20)),
+                        alignment: Alignment.center,
+                        width: double.maxFinite,
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        child: CustomText(
+                          text: "Log Out",
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                    // child: InkWell(
+                    //   onTap: () {
+                    //     Get.offAllNamed(AppRoutes.authenticationPageRoute);
+                    //   },
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //         color: AppColor.active,
+                    //         borderRadius: BorderRadius.circular(20)),
+                    //     alignment: Alignment.center,
+                    //     width: double.maxFinite,
+                    //     padding: EdgeInsets.symmetric(vertical: 16),
+                    //     child: CustomText(
+                    //       text: "AuthPage",
+                    //       color: Colors.white,
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
                 ),
               ),
               // SliderPageBody(),

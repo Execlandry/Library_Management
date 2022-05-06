@@ -29,40 +29,42 @@ class VerticalMenuItem extends StatelessWidget {
                 Visibility(
                   visible: menuController.isHovering(itemName) ||
                       menuController.isActive(itemName),
+                  maintainSize: true,
+                  maintainState: true,
+                  maintainAnimation: true,
                   child: Container(
                     width: 3,
                     height: 72,
                     color: AppColor.dark,
                   ),
-                  maintainSize: true,
-                  maintainState: true,
-                  maintainAnimation: true,
                 ),
                 Expanded(
-                    child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(16),
-                      child: menuController.returnIconFor(itemName),
-                    ),
-                    if (!menuController.isActive(itemName))
-                      Flexible(
-                          child: CustomText(
-                        text: itemName,
-                        color: menuController.isHovering(itemName)
-                            ? AppColor.dark
-                            : AppColor.lightGrey,
-                      ))
-                    else
-                      Flexible(
-                          child: CustomText(
-                        text: itemName,
-                        color: AppColor.dark,
-                        size: 18,
-                        weight: FontWeight.bold,
-                      ))
-                  ],
+                    child: Container(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: menuController.returnIconFor(itemName),
+                      ),
+                      if (!menuController.isActive(itemName))
+                        Flexible(
+                            child: CustomText(
+                          text: itemName,
+                          color: menuController.isHovering(itemName)
+                              ? AppColor.dark
+                              : AppColor.lightGrey,
+                        ))
+                      else
+                        Flexible(
+                            child: CustomText(
+                          text: itemName,
+                          color: AppColor.dark,
+                          size: 18,
+                          weight: FontWeight.bold,
+                        ))
+                    ],
+                  ),
                 ))
               ],
             ),

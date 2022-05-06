@@ -1,14 +1,75 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
+import 'package:library_management/widgets/CustomMessage/custom_message.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
+import '../../../../utils/auth_helper.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
+
+  // void _login() async {
+  //     String email = _emailController.text.trim();
+  //     String password = _passwordController.text.trim();
+
+  //    if (email.isEmpty) {
+  //       showCustomSnackBar("Type in your Email", title: "Email Empty!");
+  //     }
+  //      else if (!GetUtils.isEmail(email)) {
+  //       showCustomSnackBar("Type in your valid Email", title: "Email");
+  //     }
+  //     else if (password.isEmpty) {
+  //       showCustomSnackBar("Type in your Password", title: "Password Empty!");
+  //     }
+  //     else if (password.length < 6) {
+  //       showCustomSnackBar("Password cannot be less than six characters",
+  //           title: "Password");
+  //     }
+  //      else {
+  //        try {
+  //        final user = await AuthHelper.signIn(
+  //          email: email,
+  //          password: password);
+  //          if(user !=null){
+  //            print("SignIn Successful");
+  //            Get.offAllNamed(AppRoutes.homeRoute);
+  //        }}
+
+  //        catch (e) {
+  //            print("yoooooooo");
+  //          print(e);
+  //        }
+
+  //     }
+  //   }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +113,10 @@ class AuthPage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              TextField(
+              TextFormField(
+                controller: _emailController,
+                validator: (value) =>
+                    value!.isEmpty ? "Please Enter Valid Email" : null,
                 decoration: InputDecoration(
                     labelText: "Email",
                     hintText: "abc@domain.com",
@@ -64,6 +128,7 @@ class AuthPage extends StatelessWidget {
               ),
               TextField(
                 obscureText: true,
+                controller: _passwordController,
                 decoration: InputDecoration(
                     labelText: "Password",
                     hintText: "123",
@@ -92,9 +157,9 @@ class AuthPage extends StatelessWidget {
                 height: 15,
               ),
               InkWell(
-                onTap: () {
-                  Get.offAllNamed(AppRoutes.rootRoute);
-                },
+                onTap: signIn,
+                // Get.offAllNamed(RootRoute);
+
                 child: Container(
                   decoration: BoxDecoration(
                       color: AppColor.active,

@@ -68,9 +68,6 @@ class RevenueSectionSmall extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
                 Row(
                   children: [
                     RevenueInfo(

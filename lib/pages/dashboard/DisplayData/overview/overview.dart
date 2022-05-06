@@ -22,49 +22,50 @@ class OverViewPage extends StatefulWidget {
 class _OverViewPage extends State<OverViewPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Obx(
-          () => Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                    top: ResponsiveWidget.isSmallScreen(context) ? 6 : 6),
-                child: CustomText(
-                    text: menuController.activeItem.value,
-                    size: 24,
-                    weight: FontWeight.bold,
-                    color: AppColor.black),
+    return Container(
+      child: Column(
+        children: [
+          Obx(
+            () => Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      top: ResponsiveWidget.isSmallScreen(context) ? 6 : 6),
+                  child: CustomText(
+                      text: menuController.activeItem.value,
+                      size: 24,
+                      weight: FontWeight.bold,
+                      color: AppColor.black),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SafeArea(
+              child: ListView(
+                children: [
+                  if (ResponsiveWidget.isLargeScreen(context) ||
+                      ResponsiveWidget.isMediumScreen(context))
+                    if (ResponsiveWidget.isCustomSize(context))
+                      OverViewCardsMediumScreen()
+                    else
+                      OverviewCardsLargeScreen()
+                  else
+                    OverViewCardsSmallScreen(),
+
+                  //deciding based on screens what to display
+                  if (!ResponsiveWidget.isSmallScreen(context))
+                    RevenueSectionLarge()
+                  else
+                    RevenueSectionSmall(),
+
+                  DisplayDataWidget(),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Expanded(
-          child: ListView(
-            children: [
-              if (ResponsiveWidget.isLargeScreen(context) ||
-                  ResponsiveWidget.isMediumScreen(context))
-                if (ResponsiveWidget.isCustomSize(context))
-                  OverViewCardsMediumScreen()
-                else
-                  OverviewCardsLargeScreen()
-              else
-                OverViewCardsSmallScreen(),
-
-              //deciding based on screens what to display
-              if (!ResponsiveWidget.isSmallScreen(context))
-                RevenueSectionLarge()
-              else
-                RevenueSectionSmall(),
-
-              DisplayDataWidget(),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

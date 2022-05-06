@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:library_management/routes/routes.dart';
-import 'package:library_management/widgets/IntroPages/intropage1.dart';
-import 'package:library_management/widgets/IntroPages/intropage2.dart';
-import 'package:library_management/widgets/IntroPages/intropage3.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../landing.dart';
+// import 'package:library_management/widgets/IntroPages/IntroAnimation/anime.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../routes/routes.dart';
+import '../../widgets/IntroPages/intropage1.dart';
+import '../../widgets/IntroPages/intropage2.dart';
+import '../../widgets/IntroPages/intropage3.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _WelcomePageState extends State<WelcomePage> {
           ],
         ),
         Container(
-            alignment: Alignment(0, 0.75),
+            alignment: Alignment(0, 0.85),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -51,7 +51,15 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
 
                 //dotted indicator
-                SmoothPageIndicator(controller: _controller, count: 3),
+                SmoothPageIndicator(
+                  controller: _controller,
+                  count: 3,
+                  effect: JumpingDotEffect(
+                    activeDotColor: Color.fromARGB(255, 3, 71, 62),
+                    dotColor: Color.fromARGB(255, 229, 235, 234),
+                    spacing: 24,
+                  ),
+                ),
 
                 //next or done
                 onLastPage

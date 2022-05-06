@@ -25,7 +25,7 @@ class MenuItems {
   MenuItems(this.name, this.route);
 }
 
-List<MenuItems> sideMenuItems = [
+List<MenuItems> sideMenuItemRoute = [
   MenuItems(OverViewPageDisplayName, Routes.overViewPageRoute),
   MenuItems(AddBooksDisplayName, Routes.addBooksRoute),
   MenuItems(StudentsPageDisplayName, Routes.studentsPageRoute),
@@ -55,7 +55,7 @@ class AppRoutes {
 class Routes {
 
   static const unknownRoute = "/not-found";
-  static const rootRoute = "/";
+  static const rootRoute = "/dashboard";
   static const homeRoute = "/home";
   static const authenticationPageRoute = "/auth";
   static const overViewPageRoute = "/overview";

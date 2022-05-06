@@ -12,29 +12,32 @@ class AddBooksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Obx(
-          () => Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                    top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
-                child: CustomText(
-                    text: menuController.activeItem.value,
-                    size: 24,
-                    weight: FontWeight.bold,
-                    color: AppColor.black),
-              ),
-            ],
+    return Container(
+      child: Column(
+        children: [
+          Obx(
+            () => Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      top: ResponsiveWidget.isSmallScreen(context) ? 6 : 6),
+                  child: CustomText(
+                      text: menuController.activeItem.value,
+                      size: 24,
+                      weight: FontWeight.bold,
+                      color: AppColor.black),
+                ),
+              ],
+            ),
           ),
-        ),
-        Expanded(
-          child: ListView(
-            children: [AddBooksTable()],
+          Expanded(
+            child: ListView(
+              children: [
+                AddBooksTable()],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

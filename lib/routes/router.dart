@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_management/pages/dashboard/DisplayData/AddBooks/add_books.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Approved_Students/all_approved_student.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/routes/routes.dart';
 
@@ -8,16 +9,16 @@ import '../pages/dashboard/DisplayData/overview/overview.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case OverViewPageDisplayName:
+    case Routes.overViewPageRoute:
       return _getPageRoute(OverViewPage());
-    case AddBooksDisplayName:
+    case Routes.addBooksRoute:
       return _getPageRoute(AddBooksPage());
-    case StudentsPageDisplayName:
+    case Routes.studentsPageRoute:
       return _getPageRoute(AllApprovedStudentsPage());
-    case RegisterPageDisplayName:
+    case Routes.registerRoute:
       return _getPageRoute(RegisterPage());
     default:
-      return _getPageRoute(OverViewPage());
+      return _getPageRoute(AuthPage());
   }
 }
 
