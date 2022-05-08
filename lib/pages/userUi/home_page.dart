@@ -2,10 +2,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
 
 import '../../common/app_colors.dart';
-import '../../utils/auth_helper.dart';
+import '../../routes/routes.dart';
 import '../../widgets/CustomText/custom_text.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,7 +15,6 @@ class HomePage extends StatelessWidget {
 
   @override
   // State<HomePage> createState() => _HomePageState();
-
 
 // class _HomePageState extends State<HomePage> {
   // final user = FirebaseAuth.instance.currentUser!;
@@ -113,24 +113,25 @@ class HomePage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                    )
-                    // child: InkWell(
-                    //   onTap: () {
-                    //     Get.offAllNamed(AppRoutes.authenticationPageRoute);
-                    //   },
-                    //   child: Container(
-                    //     decoration: BoxDecoration(
-                    //         color: AppColor.active,
-                    //         borderRadius: BorderRadius.circular(20)),
-                    //     alignment: Alignment.center,
-                    //     width: double.maxFinite,
-                    //     padding: EdgeInsets.symmetric(vertical: 16),
-                    //     child: CustomText(
-                    //       text: "AuthPage",
-                    //       color: Colors.white,
-                    //     ),
-                    //   ),
-                    // ),
+                    ),
+                    SizedBox(height: 10),
+                    InkWell(
+                      onTap: () {
+                        Get.offAllNamed(AppRoutes.rootRoute);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColor.active,
+                            borderRadius: BorderRadius.circular(20)),
+                        alignment: Alignment.center,
+                        width: double.maxFinite,
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        child: CustomText(
+                          text: "AuthPage",
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

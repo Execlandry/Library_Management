@@ -12,14 +12,18 @@ import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/routes/routes.dart';
 
 import 'common/app_colors.dart';
+import 'controllers/FirebaseController/usersController.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) {
+    //This are business logic instances that needs to be loaded into memory
+    //this are loaded permanently in memory until the app is killed
     Get.put(AuthController());
     Get.put(MenuController());
     Get.put(NavigationController());
+    Get.put(UsersController());
   });
 
   runApp(const MyApp());

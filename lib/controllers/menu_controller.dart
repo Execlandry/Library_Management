@@ -30,10 +30,10 @@ class MenuController extends GetxController {
         return _customIcon(Icons.trending_up, itemName);
 
       case AddBooksDisplayName:
-        return _customIcon(Icons.drive_eta, itemName);
+        return _customIcon(Icons.book_outlined, itemName);
 
-      case StudentsPageDisplayName:
-        return _customIcon(Icons.people_alt_outlined, itemName);
+      case UsersPageDisplayName:
+        return _customIcon(Icons.people_outline, itemName);
 
       case AuthenticationPageDisplayName:
         return _customIcon(Icons.exit_to_app, itemName);

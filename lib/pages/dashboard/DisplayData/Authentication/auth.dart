@@ -8,7 +8,6 @@ import 'package:library_management/widgets/CustomMessage/custom_message.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../routes/routes.dart';
-import '../../../../utils/auth_helper.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
 class AuthPage extends StatefulWidget {

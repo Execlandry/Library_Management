@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/routes/routes.dart';
 import 'package:library_management/widgets/CustomMessage/custom_message.dart';
 
@@ -9,12 +11,6 @@ class AuthController extends GetxController {
   late Rx<User?> _firebaseUser;
   FirebaseAuth auth = FirebaseAuth.instance;
   RxBool isLoggedIn = false.obs;
-
-  // TextEditingController name = TextEditingController();
-  // TextEditingController email = TextEditingController();
-  // TextEditingController password = TextEditingController();
-  // String usersCollection = "users";
-  // Rx<UserModel> userModel = UserModel(email: '', name: '').obs;
 
   @override
   void onReady() {
@@ -36,26 +32,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void register(String email, password) async {
-    // showLoading();
-    try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      // .then((result) {
-      // String _userId = result.user.uid;
-      // _addUserToFirestore(_userId);
-      // _initializeUserModel(_userId);
-      // _clearControllers();
-      // }
-      // );
-    } catch (e) {
-      debugPrint(e.toString());
-      // showCustomSnackBar(
-      //   "Invalid credential",
-      //   title: "Account creation failed",
-      // );
-    }
-  }
+
 
   void login(String email, password) async {
     try {
@@ -80,9 +57,6 @@ class AuthController extends GetxController {
     await auth.signOut();
   }
 
-  // _clearControllers(){
-  //   name.clear();
-  //   email.clear();
-  //   password.clear();
-  // }
 }
+
+

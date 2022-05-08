@@ -7,8 +7,8 @@ import 'package:library_management/widgets/CustomText/custom_text.dart';
 import '../../../../controllers/controller.dart';
 import '../../../../helpers/screen_helper/responsive.dart';
 
-class AllApprovedStudentsPage extends StatelessWidget {
-  const AllApprovedStudentsPage({Key? key}) : super(key: key);
+class UsersDisplayPage extends StatelessWidget {
+  const UsersDisplayPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class AllApprovedStudentsPage extends StatelessWidget {
           child: ListView(
             children: [
               StudentsTable(),
-              Text("hello")],
+              ],
           ),
         ),
       ],

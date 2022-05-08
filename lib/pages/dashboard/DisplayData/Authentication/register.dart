@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
 
 import '../../../../common/app_colors.dart';
+import '../../../../common/firebase.dart';
 import '../../../../routes/routes.dart';
 import '../../../../widgets/CustomMessage/custom_message.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
@@ -18,26 +20,31 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
+    var nameController = TextEditingController();
     var emailController = TextEditingController();
     var passController = TextEditingController();
     var repassController = TextEditingController();
 
     bool registerValidate() {
-      // if (name.isEmpty) {
-      // showCustomSnackBar("Type in your Name", title: "Name Empty!");
-      // }
-      if (emailController.text.trim().isEmpty) {
-        showCustomSnackBar("Type in your Email", title: "Email Empty!");
-      } else if (!GetUtils.isEmail(emailController.text.trim())) {
-        showCustomSnackBar("Type in your valid Email", title: "Invalid Email");
-      } else if (passController.text.trim().isEmpty) {
-        showCustomSnackBar("Type in your Password", title: "Password Empty!");
-      } else if (passController.text.trim().length < 6) {
-        showCustomSnackBar("Password cannot be less than six characters",
-            title: "Password to short!");
-      } else if (repassController.text.trim().isEmpty) {
-        showCustomSnackBar("Type in your Password again",
-            title: "Confirmation Password Empty!");
+      if (true) {
+        if (nameController.text.trim().isEmpty) {
+          showCustomSnackBar("Type in your Name", title: "Name Empty!");
+        } else if (!GetUtils.isUsername(nameController.text.trim())) {
+          showCustomSnackBar("Type in your Name", title: "Name Invalid");
+        } else if (emailController.text.trim().isEmpty) {
+          showCustomSnackBar("Type in your Email", title: "Email Empty!");
+        } else if (!GetUtils.isEmail(emailController.text.trim())) {
+          showCustomSnackBar("Type in your valid Email",
+              title: "Invalid Email");
+        } else if (passController.text.trim().isEmpty) {
+          showCustomSnackBar("Type in your Password", title: "Password Empty!");
+        } else if (passController.text.trim().length < 6) {
+          showCustomSnackBar("Password cannot be less than six characters",
+              title: "Password to short!");
+        } else if (repassController.text.trim().isEmpty) {
+          showCustomSnackBar("Type in your Password again",
+              title: "Confirmation Password Empty!");
+        }
       }
       //  else {
       //   showCustomSnackBar(
@@ -46,6 +53,39 @@ class _RegisterPageState extends State<RegisterPage> {
       //   );
       // }
       return true;
+    }
+
+    Future adduserDetailsFirst(
+      String userId,
+      email,
+      name,
+    ) async {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .set({"name": name, "email": email, "department": "Computer"});
+    }
+
+    Future register(String email, password) async {
+      // showLoading();
+      try {
+        await auth
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((result) {
+          String _userId = result.user!.uid;
+          adduserDetailsFirst(
+            _userId,
+            emailController.text.trim(),
+            nameController.text.trim(),
+          );
+        });
+      } catch (e) {
+        debugPrint(e.toString());
+        // showCustomSnackBar(
+        //   "Invalid credential",
+        //   title: "Account creation failed",
+        // );
+      }
     }
 
     bool passwordConfirmed() {
@@ -58,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     @override
     void dispose() {
-      // _nameController.dispose();
+      nameController.dispose();
       emailController.dispose();
       passController.dispose();
       repassController.dispose();
@@ -111,16 +151,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 15,
                 ),
-                // TextField(
-                //   controller: _nameController,
-                //   keyboardType: TextInputType.text,
-                //   decoration: InputDecoration(
-                //       labelText: "Name",
-                //       hintText: "Your Name",
-                //       prefixIcon: Icon(Icons.person),
-                //       border: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(20))),
-                // ),
+                TextField(
+                  controller: nameController,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      labelText: "Name",
+                      hintText: "Your Name",
+                      prefixIcon: Icon(Icons.person),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20))),
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -184,8 +224,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 InkWell(
                   onTap: () {
                     if (registerValidate() && passwordConfirmed()) {
-                      AuthController.instance.register(
-                          emailController.text.trim(),
+                      register(emailController.text.trim(),
                           passController.text.trim());
                     }
                   },
