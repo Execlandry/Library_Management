@@ -60,10 +60,14 @@ class _RegisterPageState extends State<RegisterPage> {
       email,
       name,
     ) async {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .set({"name": name, "email": email, "department": "Computer"});
+      await FirebaseFirestore.instance.collection('users').doc(userId).set({
+        "name": name,
+        "email": email,
+        "department": "",
+        "contact": "",
+        "enrollment": "",
+        "year": ""
+      });
     }
 
     Future register(String email, password) async {

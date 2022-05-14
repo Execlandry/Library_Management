@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/common/firebase.dart';
@@ -10,11 +9,15 @@ import '../../pages/dashboard/DisplayData/widgets/customSnackBar.dart';
 
 class UsersController extends GetxController {
   static UsersController instance = Get.find();
-
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
+//defining controllers for form input fields
   late TextEditingController nameController,
       emailController,
+      departmentController,
+      contactController,
+      enrollmentController,
+      yearController,
       userDataSearchController;
 
   late CollectionReference collectionReference;
@@ -22,12 +25,19 @@ class UsersController extends GetxController {
 /*get the stream from usermodel and store it as list in users variable */
   RxList<UserModel> users = RxList<UserModel>([]);
 
+  var searchList = List.empty(growable: true).obs;
+
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
     nameController = TextEditingController();
     emailController = TextEditingController();
+    departmentController = TextEditingController();
+    contactController = TextEditingController();
+    enrollmentController = TextEditingController();
+    yearController = TextEditingController();
+
     userDataSearchController = TextEditingController();
 
     collectionReference = firebaseFirestore.collection("users");
@@ -49,7 +59,14 @@ class UsersController extends GetxController {
   }
 
   void saveUpdateEmployee(
-      String name, String email, String docId, int addEditFlag) {
+      String name,
+      String email,
+      String docId,
+      int addEditFlag,
+      String department,
+      String contactNumber,
+      String enrollment,
+      String year) {
     final isValid = formkey.currentState!.validate();
     if (!isValid) {
       return;
@@ -78,9 +95,14 @@ class UsersController extends GetxController {
     } else if (addEditFlag == 2) {
       //update
       CustomFullScreenDialog.showDialog();
-      collectionReference
-          .doc(docId)
-          .update({'name': name, 'email': email}).whenComplete(() {
+      collectionReference.doc(docId).update({
+        'name': name,
+        'email': email,
+        'department': department,
+        'contact': contactNumber,
+        'enrollment': enrollment,
+        'year': year
+      }).whenComplete(() {
         CustomFullScreenDialog.cancelDialog();
         clearEditingControllers();
         Get.back();
@@ -109,12 +131,20 @@ class UsersController extends GetxController {
   void onClose() {
     nameController.dispose();
     emailController.dispose();
+    departmentController.dispose();
+    contactController.dispose();
+    enrollmentController.dispose();
+    yearController.dispose();
     userDataSearchController.dispose();
   }
 
   void clearEditingControllers() {
     nameController.clear();
     emailController.clear();
+    departmentController.clear();
+    contactController.clear();
+    enrollmentController.clear();
+    yearController.clear();
     userDataSearchController.clear();
   }
 
@@ -143,7 +173,21 @@ class UsersController extends GetxController {
   }
 
   /*Add Search Functionality */
-  // getSearch(String query) async{
-  //   FirebaseFirestore.instance.collection("users").where("email");
+  // getSearch(String query) async {
+  //   await FirebaseFirestore.instance
+  //       .collection("users")
+  //       .where("email", isEqualTo: query)
+  //       .get();
+  // .then((value) => userMap = value.docs[0].data());
+  // print(userMap);
+  // userMap != null
+  //     ? ListTile(
+  //         // onTap: onResultTap,
+  //         leading: Icon(Icons.account_box),
+  //         title: Text(userMap!['name']),
+  //         subtitle: Text(userMap!['email']),
+  //         trailing: Icon(Icons.add),
+  //       )
+  //     : SizedBox();
   // }
 }

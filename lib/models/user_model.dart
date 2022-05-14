@@ -5,13 +5,27 @@ class UserModel {
   String? name;
   String? email;
   String? department;
-  
-  UserModel({this.docId,this.name,this.email,this.department});
+  String? contactNumber;
+  String? enrollment;
+  String? year;
 
-  UserModel.fromMap(DocumentSnapshot data){
+  UserModel(
+      {this.docId,
+      this.name,
+      this.email,
+      this.department,
+      this.contactNumber,
+      this.enrollment,
+      this.year});
+
+  UserModel.fromMap(DocumentSnapshot data) {
     docId = data.id;
     name = data["name"];
-    email = data["email"]; 
+    email = data["email"];
     department = data["department"];
+    contactNumber = data["contact"];
+    enrollment = data["enrollment"];
+    year = data["year"];
   }
+
 }
