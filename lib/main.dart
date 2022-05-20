@@ -1,37 +1,21 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:library_management/controllers/menu_controller.dart';
-import 'package:library_management/routes/routes.dart';
+import 'package:library_management/pages/HomeScreen.dart';
+import 'package:library_management/pages/drawerPage.dart';
 
 void main() {
-  Get.put(MenuController());
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    home: HomePage(),
+    theme: ThemeData(fontFamily: 'Circular'),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-  // This widget is the root of your application.
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'LibMe',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-          textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme).apply(
-            bodyColor: Colors.black
-          ),
-          pageTransitionsTheme: const PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-
-          }),
-          primaryColor: Colors.blue
-          ),
-      initialRoute: AppRoutes.dashboard,
-      getPages: AppRoutes.routes,
+    return Scaffold(
+      body: Stack(
+        children: [DrawerScreen(), HomeScreen()],
+      ),
     );
   }
 }
