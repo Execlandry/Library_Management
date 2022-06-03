@@ -5,7 +5,7 @@ import 'package:library_management/pages/dashboard/Entrypoint/sidebar_menu.dart'
 import 'package:library_management/helpers/screen_helper/large_screen.dart';
 import 'package:library_management/pages/dashboard/Header/top_nav.dart';
 
-class Landing extends StatelessWidget {
+class DashLanding extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,11 @@ class Landing extends StatelessWidget {
         // ignore: prefer_const_constructors
         body: SafeArea(
           child: ResponsiveWidget(
-            largeScreen: LargeScreen(),
-            smallScreen: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: localNavigator(),
-            )
-          ),
+              largeScreen: LargeScreen(),
+              smallScreen: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: localNavigator(),
+              )),
         ));
   }
 }

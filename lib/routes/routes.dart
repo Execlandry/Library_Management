@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:library_management/landing.dart';
+import 'package:library_management/dash_landing.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/pages/introUi/welcome_page.dart';
-import 'package:library_management/pages/userUi/home_page.dart';
+import 'package:library_management/home_landing.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
 
 const RegisterPageDisplayName = "Register";
@@ -44,12 +44,13 @@ class AppRoutes {
 
   static final routes = [
     GetPage(name: unknownRoute, page: () => PageNotFound()),
-    GetPage(name: rootRoute, page: () => Landing()),
+    GetPage(name: rootRoute, page: () => DashLanding()),
     GetPage(name: welcomeRoute, page: () => WelcomePage()),
     GetPage(
         name: homeRoute,
-        page: () => HomePage(
+        page: () => HomeLanding(
               email: AuthController.instance.auth.currentUser!.email,
+              // name: AuthController.instance.auth.currentUser!.name,
             )),
     GetPage(name: authenticationPageRoute, page: () => AuthPage()),
     GetPage(name: registerRoute, page: () => RegisterPage()),

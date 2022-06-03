@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
+import 'package:library_management/controllers/FirebaseController/bookController.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
 import 'package:library_management/firebase_options.dart';
@@ -23,6 +24,7 @@ void main() async {
     Get.put(AuthController());
     Get.put(MenuController());
     Get.put(NavigationController());
+    Get.put(BookController());
     Get.put(UsersController());
   });
 
@@ -41,15 +43,15 @@ class MyApp extends StatelessWidget {
       title: 'Library',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          scaffoldBackgroundColor: AppColor.light,
-          textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
-              .apply(bodyColor: Colors.black),
-          pageTransitionsTheme: const PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-          }),
-          primaryColor: Colors.blue),
-
+        scaffoldBackgroundColor: AppColor.light,
+        textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
+            .apply(bodyColor: Colors.black),
+        pageTransitionsTheme: const PageTransitionsTheme(builders: {
+          TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+        }),
+        primaryColor: AppColor.kprimaryColor,
+      ),
 
       unknownRoute: GetPage(
           name: AppRoutes.unknownRoute,
@@ -60,4 +62,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

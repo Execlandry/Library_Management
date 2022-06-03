@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:library_management/controllers/FirebaseController/usersController.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Approved_Students/widget/user_card.dart';
 
 //using GetView<UsersController> we can use Userscontroller properties without creating its instance
 class UsersPage extends GetView<UsersController> {
@@ -14,47 +15,88 @@ class UsersPage extends GetView<UsersController> {
             shrinkWrap: true,
             itemCount: controller.users.length,
             itemBuilder: (context, index) => Card(
-                color: Color.fromARGB(255, 150, 157, 177),
-                child: ListTile(
-                    title: Text(controller.users[index].name!),
-                    subtitle: Text(controller.users[index].email!),
-                    leading: CircleAvatar(
-                      child: Text(
-                        controller.users[index].name!
-                            .substring(0, 1)
-                            .capitalize!,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      backgroundColor: Colors.yellow,
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.delete_forever,
-                        color: Colors.red,
-                      ),
-                      onPressed: () {
-                        displayDeleteDialog(controller.users[index].docId!);
-                      },
-                    ),
-                    onTap: () {
-                      controller.nameController.text =
-                          controller.users[index].name!;
-                      controller.emailController.text =
-                          controller.users[index].email!;
-                      controller.departmentController.text =
-                          controller.users[index].department!;
-                      controller.contactController.text =
-                          controller.users[index].contactNumber!;
-                      controller.enrollmentController.text =
-                          controller.users[index].enrollment!;
-                      controller.yearController.text =
-                          controller.users[index].year!;
+              shadowColor: Colors.cyan,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.black,
+                  width: 2.0,
+                ),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              elevation: 12,
+              color: Color.fromARGB(255, 150, 157, 177),
+              child: GestureDetector(
+                onTap: () {
+                  controller.nameController.text =
+                      controller.users[index].name!;
+                  controller.emailController.text =
+                      controller.users[index].email!;
+                  controller.departmentController.text =
+                      controller.users[index].department!;
+                  controller.contactController.text =
+                      controller.users[index].contactNumber!;
+                  controller.enrollmentController.text =
+                      controller.users[index].enrollment!;
+                  controller.yearController.text =
+                      controller.users[index].year!;
 
-                      _buildAddEditUsersView(
-                          text: 'Update',
-                          addEditFlag: 2,
-                          docId: controller.users[index].docId!);
-                    })),
+                  _buildAddEditUsersView(
+                      text: 'Update',
+                      addEditFlag: 2,
+                      docId: controller.users[index].docId!);
+                },
+                child: UserCard(
+                  fullName: controller.users[index].name!.capitalize!.trim(),
+                  email: controller.users[index].email!.trim(),
+                  department:
+                      controller.users[index].department!.capitalize!.trim() +
+                          " Department",
+                  contactNumber: controller.users[index].contactNumber!.trim(),
+                  enrollment: controller.users[index].enrollment!.trim(),
+                  year: controller.users[index].year!.trim(),
+                ),
+              ),
+
+              // child: ListTile(
+              //   title: Text(controller.users[index].name!),
+              //   subtitle: Text(controller.users[index].email!),
+              //   leading: CircleAvatar(
+              //     child: Text(
+              //       controller.users[index].name!.substring(0, 1).capitalize!,
+              //       style: TextStyle(fontWeight: FontWeight.bold),
+              //     ),
+              //     backgroundColor: Colors.yellow,
+              //   ),
+              //   trailing: IconButton(
+              //     icon: Icon(
+              //       Icons.delete_forever,
+              //       color: Colors.red,
+              //     ),
+              //     onPressed: () {
+              //       displayDeleteDialog(controller.users[index].docId!);
+              //     },
+              //   ),
+              //   onTap: () {
+              //     controller.nameController.text =
+              //         controller.users[index].name!;
+              //     controller.emailController.text =
+              //         controller.users[index].email!;
+              //     controller.departmentController.text =
+              //         controller.users[index].department!;
+              //     controller.contactController.text =
+              //         controller.users[index].contactNumber!;
+              //     controller.enrollmentController.text =
+              //         controller.users[index].enrollment!;
+              //     controller.yearController.text =
+              //         controller.users[index].year!;
+
+              //     _buildAddEditUsersView(
+              //         text: 'Update',
+              //         addEditFlag: 2,
+              //         docId: controller.users[index].docId!);
+              //   },
+              // ),
+            ),
           )),
     );
     // ],

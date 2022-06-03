@@ -8,9 +8,9 @@ class UserCard extends StatelessWidget {
   final String enrollment;
   final String year;
   final color;
-  final Function press;
+  // final GestureTapCallback? onTap;
   // final Function onTap;
-  const UserCard({
+  UserCard({
     Key? key,
     required this.fullName,
     required this.email,
@@ -19,7 +19,7 @@ class UserCard extends StatelessWidget {
     required this.enrollment,
     required this.year,
     this.color,
-    required this.press,
+    // required this.onTap,
     /*required this.onTap*/
   }) : super(key: key);
 
@@ -89,7 +89,7 @@ class UserCard extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () => press,
+                      onPressed: () {},
                       icon: Icon(
                         Icons.delete_forever,
                         color: Colors.red,

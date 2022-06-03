@@ -25,7 +25,8 @@ class UsersController extends GetxController {
 /*get the stream from usermodel and store it as list in users variable */
   RxList<UserModel> users = RxList<UserModel>([]);
 
-  var searchList = List.empty(growable: true).obs;
+  // var searchList = List.empty(growable: true).obs;
+  // RxList<List> searchList = RxList<List>([]);
 
   @override
   void onInit() {
@@ -42,6 +43,7 @@ class UsersController extends GetxController {
 
     collectionReference = firebaseFirestore.collection("users");
     users.bindStream(getAllUsers());
+    // searchList.add(getAllUsers());
   }
 
   String? validateName(String value) {
@@ -90,7 +92,7 @@ class UsersController extends GetxController {
             context: Get.context,
             title: "Error",
             message: "Something went wrong",
-            backgroundColor: Colors.green);
+            backgroundColor: Colors.red);
       });
     } else if (addEditFlag == 2) {
       //update
@@ -171,6 +173,12 @@ class UsersController extends GetxController {
           backgroundColor: Colors.red);
     });
   }
+
+
+//  void getSearch(String inputString) {
+//     // searchList = users.where((p0) => false).get
+    
+//   }
 
   /*Add Search Functionality */
   // getSearch(String query) async {
