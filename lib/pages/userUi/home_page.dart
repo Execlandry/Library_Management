@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:library_management/common/app_colors.dart';
 // import 'package:pet_ui/configuration.dart';
@@ -18,11 +19,14 @@ class _HomePageState extends State<HomePage> {
 
   bool isDrawerOpen = false;
 
+  
+
   //  String? email;
   // String? name;
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     Size size = MediaQuery.of(context).size;
     return AnimatedContainer(
       transform: Matrix4.translationValues(xOffset, yOffset, 0)
@@ -70,11 +74,16 @@ class _HomePageState extends State<HomePage> {
                       Text('Welcome!'),
                       Row(
                         children: [
-                          // Icon(
-                          //   Icons.location_on,
-                          //   // color: primaryGreen,
-                          // ),
-                          // Text(email!),
+                          Icon(
+                            Icons.location_on,
+                            // color: primaryGreen,
+                          ),
+                          // if(user != null ){
+                          //   Text(),
+                          // }
+                          // else{
+
+                          // }
                         ],
                       ),
                     ],

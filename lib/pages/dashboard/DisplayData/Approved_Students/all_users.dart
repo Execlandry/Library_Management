@@ -33,18 +33,19 @@ class UsersDisplayPage extends GetView<UsersController> {
             ],
           ),
         ),
-        TextFormField(
-          // onChanged: (search) {
-          //   controller.getSearch(search);
-          // },
+        TextField(
+          onChanged: (value) {},
           decoration: InputDecoration(
-            hintText: "Search",
-            contentPadding: EdgeInsets.all(12),
+            hintText: "Search a User",
             hintStyle: TextStyle(
-              fontSize: 13,
+              color: Colors.black.withOpacity(0.5),
             ),
-            border: InputBorder.none,
-            fillColor: Colors.transparent,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            prefixIcon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
           ),
         ),
         SizedBox(

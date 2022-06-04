@@ -7,13 +7,11 @@ import 'package:library_management/controllers/FirebaseController/authController
 import 'package:library_management/pages/userUi/drawer_screen.dart';
 import 'package:library_management/pages/userUi/home_page.dart';
 
-import 'common/app_colors.dart';
-import 'routes/routes.dart';
-import 'widgets/CustomText/custom_text.dart';
+
 
 class HomeLanding extends StatelessWidget {
-  String? email;
-  HomeLanding({Key? key, required this.email}) : super(key: key);
+  // String? email;
+  HomeLanding({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class HomeLanding extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            DrawerScreen(),
+            DrawerScreen(email:AuthController.instance.auth.currentUser!.email),
             HomePage(),
           ],
         ),

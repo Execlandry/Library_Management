@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:library_management/controllers/FirebaseController/authController.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../common/firebase.dart';
@@ -74,8 +73,11 @@ class _RegisterPageState extends State<RegisterPage> {
       // showLoading();
       try {
         await auth
-            .createUserWithEmailAndPassword(email: email, password: password)
+            .createUserWithEmailAndPassword(email: email, password: password)   
             .then((result) {
+              
+              // updateUserName(nameController.text.trim(), currentUser)
+              
           String _userId = result.user!.uid;
           adduserDetailsFirst(
             _userId,

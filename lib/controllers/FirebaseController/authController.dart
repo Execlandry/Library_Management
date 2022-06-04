@@ -23,7 +23,6 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreen(User? user) {
-    Future
     if (user == null) {
       print("Welcome page");
       Get.offAllNamed(AppRoutes.welcomeRoute);
@@ -39,7 +38,7 @@ class AuthController extends GetxController {
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((result) {
-        Get.offAllNamed(AppRoutes.rootRoute);
+        Get.offAllNamed(AppRoutes.homeRoute);
 
         // String _userId = result.user.uid;
         // _initializeUserModel(_userId);

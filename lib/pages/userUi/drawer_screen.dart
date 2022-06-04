@@ -6,10 +6,11 @@ import '../../controllers/FirebaseController/authController.dart';
 import '../../routes/routes.dart';
 
 class DrawerScreen extends StatefulWidget {
-  const DrawerScreen({Key? key}) : super(key: key);
+  String? email;
+  DrawerScreen({Key? key, required this.email}) : super(key: key);
 
   @override
-  _DrawerScreenState createState() => _DrawerScreenState();
+  State<DrawerScreen> createState() => _DrawerScreenState();
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
@@ -23,7 +24,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
         children: [
           Row(
             children: [
-              CircleAvatar(),
+              // CircleAvatar(),
               SizedBox(
                 width: 10,
               ),
@@ -31,13 +32,18 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'UserName',
+                    "Signed in as",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  Text('Active Status',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold))
+                  Text(
+                    widget.email!,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  // Text('Active Status',
+                  //     style: TextStyle(
+                  //         color: Colors.white, fontWeight: FontWeight.bold))
                 ],
               )
             ],
@@ -76,17 +82,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 width: 10,
               ),
               GestureDetector(
-                onTap: (){
-                  Get.offAllNamed(AppRoutes.authenticationPageRoute);
+                onTap: () {
+                  Get.offAllNamed(AppRoutes.rootRoute);
                 },
                 child: Text(
                   'Settings',
-                  style:
-                      TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
-
-              
               SizedBox(
                 width: 10,
               ),
@@ -99,11 +103,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 width: 10,
               ),
               GestureDetector(
-                onTap: (){AuthController.instance.logOut();},
+                onTap: () {
+                  AuthController.instance.logOut();
+                },
                 child: Text(
                   'Log out',
-                  style:
-                      TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               )
             ],

@@ -16,6 +16,6 @@ Color primaryGreen = Color(0xff416d6d);
 
 List<Map> drawerItems = [
   {'icon': Icons.favorite, 'title': 'Favorites'},
-  {'icon': Icons.mail, 'title': 'Messages'},
-  {'icon': Icons.verified_user, 'title': 'Profile'},
+  // {'icon': Icons.mail, 'title': 'Messages'},
+  // {'icon': Icons.verified_user, 'title': 'Profile'},
 ];

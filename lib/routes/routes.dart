@@ -49,7 +49,7 @@ class AppRoutes {
     GetPage(
         name: homeRoute,
         page: () => HomeLanding(
-              email: AuthController.instance.auth.currentUser!.email,
+              // email: AuthController.instance.auth.currentUser!.email,
               // name: AuthController.instance.auth.currentUser!.name,
             )),
     GetPage(name: authenticationPageRoute, page: () => AuthPage()),
