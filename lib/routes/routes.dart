@@ -29,7 +29,7 @@ List<MenuItems> sideMenuItemRoute = [
   MenuItems(OverViewPageDisplayName, Routes.overViewPageRoute),
   MenuItems(AddBooksDisplayName, Routes.addBooksRoute),
   MenuItems(UsersPageDisplayName, Routes.studentsPageRoute),
-  MenuItems(AuthenticationPageDisplayName, Routes.authenticationPageRoute),
+  // MenuItems(AuthenticationPageDisplayName, Routes.authenticationPageRoute),
   MenuItems(RegisterPageDisplayName, Routes.registerRoute),
 ];
 
@@ -39,7 +39,6 @@ class AppRoutes {
   static const welcomeRoute = Routes.welcomeRoute;
   static const homeRoute = Routes.homeRoute;
   static const authenticationPageRoute = Routes.authenticationPageRoute;
-
   static const registerRoute = Routes.registerRoute;
 
   static final routes = [

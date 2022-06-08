@@ -9,7 +9,7 @@ class IntroPage1 extends StatelessWidget {
       color: Color.fromARGB(255, 10, 134, 118),
       child: Center(
        child:Lottie.asset(
-         'assets/animations/book-idea.json',
+         'assets/animations/girl-with-books.json',
          height: 300,
        ),
        

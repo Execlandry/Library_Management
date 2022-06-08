@@ -16,7 +16,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  PageController _controller = PageController();
+  final PageController _controller = PageController();
 
   bool onLastPage = false;
   @override
@@ -47,7 +47,37 @@ class _WelcomePageState extends State<WelcomePage> {
                   onTap: () {
                     _controller.jumpToPage(2);
                   },
-                  child: Text('skip'),
+                  child: Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 229, 235, 234),
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 1, 59, 52),
+                          spreadRadius: 3,
+                          blurRadius: 8,
+                          offset: Offset(4, 4),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "skip",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 3, 71, 62),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                  //  child: RaisedButton(
+                  //    onPressed:() { IntroPage3(); },
+                  //    child: Text('skip'),
+                  //    color: Color.fromARGB(255, 222, 231, 230),
+                  //  )
                 ),
 
                 //dotted indicator
@@ -67,7 +97,37 @@ class _WelcomePageState extends State<WelcomePage> {
                         onTap: () {
                           Get.offAllNamed(AppRoutes.authenticationPageRoute);
                         },
-                        child: Text('done'),
+                        child: Container(
+                          height: 25,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 229, 235, 234),
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 1, 59, 52),
+                                spreadRadius: 3,
+                                blurRadius: 8,
+                                offset: Offset(4, 4),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              "done",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 3, 71, 62),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        //       child: RaisedButton(
+                        //    onPressed:() { IntroPage3(); },
+                        //    child: Text('done'),
+                        //    color: Color.fromARGB(255, 222, 231, 230),
                       )
                     : GestureDetector(
                         onTap: () {
@@ -76,7 +136,38 @@ class _WelcomePageState extends State<WelcomePage> {
                             curve: Curves.easeIn,
                           );
                         },
-                        child: Text('next'),
+                        child: Container(
+                          height: 25,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 229, 235, 234),
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 1, 59, 52),
+                                spreadRadius: 3,
+                                blurRadius: 8,
+                                offset: Offset(4, 4),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              "next",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 3, 71, 62),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        //       child: RaisedButton(
+                        //    onPressed:() { IntroPage3(); },
+                        //    child: Text('next'),
+                        //    color: Color.fromARGB(255, 222, 231, 230),
+                        //  )
                       ),
               ],
             ))

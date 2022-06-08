@@ -18,7 +18,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case Routes.registerRoute:
       return _getPageRoute(RegisterPage());
     default:
-      return _getPageRoute(AuthPage());
+      return _getPageRoute(OverViewPage());
+      // return _getPageRoute(RegisterPage());
+
   }
 }
 

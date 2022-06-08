@@ -275,6 +275,7 @@ class UsersPage extends GetView<UsersController> {
       onCancel: () {},
       onConfirm: () {
         controller.deleteData(docId);
+        
       },
     );
   }

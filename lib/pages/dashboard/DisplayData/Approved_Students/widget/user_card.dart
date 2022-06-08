@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class UserCard extends StatelessWidget {
+import '../../../../../controllers/FirebaseController/usersController.dart';
+
+class UserCard extends GetView<UsersController> {
   final String fullName;
   final String email;
   final String department;
@@ -89,7 +92,10 @@ class UserCard extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                    // displayDeleteDialog(controller.users[index].docId!);
+
+                      },
                       icon: Icon(
                         Icons.delete_forever,
                         color: Colors.red,

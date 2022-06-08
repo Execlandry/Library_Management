@@ -65,7 +65,8 @@ class _RegisterPageState extends State<RegisterPage> {
         "department": "",
         "contact": "",
         "enrollment": "",
-        "year": ""
+        "year": "",
+        "role" : "user"
       });
     }
 
@@ -73,17 +74,17 @@ class _RegisterPageState extends State<RegisterPage> {
       // showLoading();
       try {
         await auth
-            .createUserWithEmailAndPassword(email: email, password: password)   
+            .createUserWithEmailAndPassword(email: email, password: password)
             .then((result) {
-              
-              // updateUserName(nameController.text.trim(), currentUser)
-              
+          // updateUserName(nameController.text.trim(), currentUser)
+
           String _userId = result.user!.uid;
           adduserDetailsFirst(
             _userId,
             emailController.text.trim(),
             nameController.text.trim(),
           );
+          Get.toNamed(AppRoutes.homeRoute);
         });
       } catch (e) {
         debugPrint(e.toString());
@@ -270,13 +271,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 15,
                 ),
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(text: "Do not have admin credentials? "),
-                  TextSpan(
-                      text: "Request Credentials! ",
-                      style: TextStyle(color: AppColor.active))
-                ]))
+              //   RichText(
+              //     text: TextSpan(
+              //       children: [
+              //         TextSpan(text: "Do not have admin credentials? "),
+              //         TextSpan(
+              //             text: "Request Credentials! ",
+              //             style: TextStyle(color: AppColor.active))
+              //       ],
+              //     ),
+              //   ),
               ],
             ),
           ),

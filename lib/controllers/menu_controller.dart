@@ -35,7 +35,7 @@ class MenuController extends GetxController {
       case UsersPageDisplayName:
         return _customIcon(Icons.people_outline, itemName);
 
-      case AuthenticationPageDisplayName:
+      case RegisterPageDisplayName:
         return _customIcon(Icons.exit_to_app, itemName);
 
       default:

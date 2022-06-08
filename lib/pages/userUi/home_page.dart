@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:library_management/common/app_colors.dart';
@@ -18,15 +19,25 @@ class _HomePageState extends State<HomePage> {
   double scaleFactor = 1;
 
   bool isDrawerOpen = false;
-
-  
+  TextEditingController _searchController = TextEditingController();
+  List _allResult = [];
 
   //  String? email;
   // String? name;
 
+  getBooksStream() async {
+    final uid = await FirebaseAuth.instance.currentUser;
+    // var data = await FirebaseFirestore.instance
+    // .collection("books").doc(uid).get();
+
+    setState(() {
+      // _allResult = data.document;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
+    // final user = FirebaseAuth.instance.currentUser;
     Size size = MediaQuery.of(context).size;
     return AnimatedContainer(
       transform: Matrix4.translationValues(xOffset, yOffset, 0)
@@ -71,24 +82,32 @@ class _HomePageState extends State<HomePage> {
                           }),
                   Column(
                     children: [
-                      Text('Welcome!'),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            // color: primaryGreen,
-                          ),
-                          // if(user != null ){
-                          //   Text(),
-                          // }
-                          // else{
-
-                          // }
-                        ],
+                      Text(
+                        'Welcome !',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      // Row(
+                      // children: [
+                      // Icon(
+                      // Icons.location_on,
+                      // color: primaryGreen,
+                      // ),
+                      // if(user != null ){
+                      //   Text(),
+                      // }
+                      // else{
+
+                      // }
+                      // ],
+                      // ),
                     ],
                   ),
-                  CircleAvatar()
+                  SizedBox(
+                    width: 40,
+                  )
+                  // CircleAvatar()
                 ],
               ),
             ),
@@ -130,6 +149,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         child: TextField(
+                          controller: _searchController,
                           onChanged: (value) {},
                           decoration: InputDecoration(
                             hintText: "Search a Book",

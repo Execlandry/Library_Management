@@ -8,6 +8,7 @@ class UserModel {
   String? contactNumber;
   String? enrollment;
   String? year;
+  String? role;
 
   UserModel(
       {this.docId,
@@ -16,7 +17,8 @@ class UserModel {
       this.department,
       this.contactNumber,
       this.enrollment,
-      this.year});
+      this.year,
+      this.role = "user"});
 
   UserModel.fromMap(DocumentSnapshot data) {
     docId = data.id;
@@ -26,6 +28,7 @@ class UserModel {
     contactNumber = data["contact"];
     enrollment = data["enrollment"];
     year = data["year"];
+    role = data["role"];
   }
 
 }

@@ -3,6 +3,8 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/helpers/screen_helper/responsive.dart';
 import 'package:library_management/widgets/CustomText/custom_text.dart';
 
+import '../../../controllers/FirebaseController/authController.dart';
+
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     AppBar(
       leading: !ResponsiveWidget.isSmallScreen(context)
@@ -37,13 +39,26 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           Expanded(
             child: Container(),
           ),
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: AppColor.dark.withOpacity(.7),
+          GestureDetector(
+            onTap: (){
+                  AuthController.instance.logOut();
+
+            },
+            
+            child: CustomText(
+              text: "Logout",
+              color: AppColor.lightGrey,
+              weight: FontWeight.bold,
+              size: 16,
             ),
-            onPressed: () {},
           ),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.settings,
+          //     color: AppColor.dark.withOpacity(.7),
+          //   ),
+            // onPressed: () {},
+          // ),
           Stack(
             children: [
               IconButton(
