@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:library_management/common/firebase.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
 import 'package:library_management/controllers/FirebaseController/bookController.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';

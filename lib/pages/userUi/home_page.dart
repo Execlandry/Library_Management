@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:library_management/common/app_colors.dart';
+import 'package:library_management/pages/userUi/cardsui.dart';
 // import 'package:pet_ui/configuration.dart';
 // import 'package:pet_ui/screen2.dart';
 
@@ -20,20 +22,20 @@ class _HomePageState extends State<HomePage> {
 
   bool isDrawerOpen = false;
   TextEditingController _searchController = TextEditingController();
-  List _allResult = [];
+  // List _allResult = [];
 
   //  String? email;
   // String? name;
 
-  getBooksStream() async {
-    final uid = await FirebaseAuth.instance.currentUser;
-    // var data = await FirebaseFirestore.instance
-    // .collection("books").doc(uid).get();
+  // getBooksStream() async {
+  //   final uid = await FirebaseAuth.instance.currentUser;
+  //   // var data = await FirebaseFirestore.instance
+  //   // .collection("books").doc(uid).get();
 
-    setState(() {
-      // _allResult = data.document;
-    });
-  }
+  //   setState(() {
+  //     // _allResult = data.document;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -167,159 +169,32 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ]),
-                  // child: Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: TextField(
-                  //         onChanged: (value) {},
-                  //         decoration: InputDecoration(
-                  //           hintText: "Search",
-                  //           hintStyle: TextStyle(
-                  //               // color: kPrimaryColor.withOpacity(0.5),
-                  //               ),
-                  //           enabledBorder: InputBorder.none,
-                  //           focusedBorder: InputBorder.none,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
 
-            // Container(
-            // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            // margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            // decoration: BoxDecoration(
-            // color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            // child: Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // children: [
-            // Icon(Icons.search),
-
-            // TextFormField(
-            // controller: controller.accessionNoController,
-            // decoration: InputDecoration(
-            //   border: OutlineInputBorder(),
-            //   labelText: "Search a Book",
-            // labelStyle: TextStyle(
-            //   color: Colors.black,
-            // ),
-            // ),
-            // ),
-            // Icon(Icons.settings)
-            // ],
-            // ),
-            // ),
-            // Container(
-            //   height: 120,
-            //   child: ListView.builder(
-            //     scrollDirection: Axis.horizontal,
-            //     // itemCount: categories.length,
-            //     itemBuilder: (context, index) {
-            //       return Container(
-            //         child: Column(
-            //           children: [
-            //             Container(
-            //               padding: EdgeInsets.all(10),
-            //               margin: EdgeInsets.only(left: 20),
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   // boxShadow: shadowList,
-            //                   borderRadius: BorderRadius.circular(10)),
-            //               // child: Image.asset(categories[index]['iconPath'],       height: 50,
-            //               // width: 50,color: Colors.grey[700],),
-            //             ),
-            //             // Text(categories[index]['name'])
-            //           ],
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
-            GestureDetector(
-              onTap: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
-              },
-              child: Container(
-                height: 240,
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blueGrey[300],
-                              borderRadius: BorderRadius.circular(20),
-                              // boxShadow: shadowList,
-                            ),
-                            margin: EdgeInsets.only(top: 50),
-                          ),
-                          Align(
-                            child: Hero(
-                                tag: 1,
-                                child: Image.asset('images/pet-cat2.png')),
-                          )
-                        ],
-                      ),
+                    GestureDetector(
+                      onTap: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
+                      },
+                      child: SizedBox(
+                          height: 1000,
+                          width: 1000,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: 3,
+                              itemBuilder: (context, index) => BookCard())),
                     ),
-                    Expanded(
-                        child: Container(
-                      margin: EdgeInsets.only(top: 60, bottom: 20),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-
-                          // boxShadow: shadowList,
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20))),
-                    ))
                   ],
                 ),
               ),
-            ),
-            Container(
-              height: 240,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.orange[100],
-                            borderRadius: BorderRadius.circular(20),
-                            // boxShadow: shadowList,
-                          ),
-                          margin: EdgeInsets.only(top: 50),
-                        ),
-                        Align(
-                          child: Image.asset('images/pet-cat1.png'),
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(top: 60, bottom: 20),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-
-                          // boxShadow: shadowList,
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20))),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 130,
             ),
           ],
         ),
