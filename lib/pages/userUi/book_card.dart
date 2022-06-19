@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 
 class BookCard extends StatelessWidget {
+  final String accession;
+  final String title;
+  final String callno;
+  final String pages;
+  final String year;
+  final String edition;
+  final String stocked;
+  final color;
+
   const BookCard({
     Key? key,
+    required this.accession,
+    required this.title,
+    required this.callno,
+    required this.pages,
+    required this.year,
+    required this.edition,
+    required this.stocked,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -25,42 +42,57 @@ class BookCard extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  'Accession No:',
-                  style: TextStyle(color: Colors.white),
+                Row(
+                  children: [
+                    Text(
+                      'Accession: ' + accession,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Spacer(),
+                    Icon(Icons.person),
+                  ],
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  'Book Title:',
-                  style: TextStyle(color: Colors.white, fontSize: 28),
+                Center(
+                  child: Text(
+                    title,
+                    style: TextStyle(color: Colors.white, fontSize: 28),
+                  ),
                 ),
                 SizedBox(
                   height: 30,
                 ),
                 Text(
-                  'Call No.:',
+                  'Call No: ' + callno,
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(20),
+                Text(
+                  "Stocked at: " + stocked,
+                  style: TextStyle(color: Colors.white),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Padding(
+                //   padding: EdgeInsets.all(20),
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Pages :',
+                      'Pages :' + pages,
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
-                      'Year:',
+                      'Year:' + year,
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
-                      'Edition :',
+                      'Edition :' + edition,
                       style: TextStyle(color: Colors.white),
                     ),
                   ],

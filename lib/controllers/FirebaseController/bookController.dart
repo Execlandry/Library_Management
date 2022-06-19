@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/common/firebase.dart';
+import 'package:library_management/models/book_model.dart';
 
 import '../../pages/dashboard/DisplayData/widgets/customFullScreenDialog.dart';
 import '../../pages/dashboard/DisplayData/widgets/customSnackBar.dart';
@@ -19,9 +20,13 @@ class BookController extends GetxController {
       billNoController,
       billDateController,
       costController,
-      callNoController;
+      callNoController,
+      stockedatController;
 
   late CollectionReference collectionReference;
+
+  RxList<BookModel> books = RxList<BookModel>([]);
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -36,8 +41,10 @@ class BookController extends GetxController {
     billDateController = TextEditingController();
     costController = TextEditingController();
     callNoController = TextEditingController();
+    stockedatController = TextEditingController();
 
     collectionReference = firebaseFirestore.collection("books");
+    books.bindStream(getAllBooks());
   }
 
   void saveBook(
@@ -52,7 +59,8 @@ class BookController extends GetxController {
       String billNo,
       String billDate,
       String cost,
-      String callNo) {
+      String callNo,
+      String stockedAt) {
     // final isValid = formkey.currentState!.validate();
     // if (!isValid) {
     //   return;
@@ -72,7 +80,8 @@ class BookController extends GetxController {
         'billNo': billNo,
         'billDate': billDate,
         'cost': cost,
-        'callNo': callNo
+        'callNo': callNo,
+        'stockedAt': stockedAt
       }).whenComplete(() {
         CustomFullScreenDialog.cancelDialog();
         clearEditingControllers();
@@ -110,6 +119,7 @@ class BookController extends GetxController {
     billDateController.dispose();
     costController.dispose();
     callNoController.dispose();
+    stockedatController.dispose();
   }
 
   void clearEditingControllers() {
@@ -123,5 +133,8 @@ class BookController extends GetxController {
     billDateController.clear();
     costController.clear();
     callNoController.clear();
+    stockedatController.clear();
   }
+  Stream<List<BookModel>> getAllBooks() => collectionReference.snapshots().map(
+      (query) => query.docs.map((item) => BookModel.fromMap(item)).toList());
 }

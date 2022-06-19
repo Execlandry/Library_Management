@@ -13,7 +13,7 @@ class Steppers extends GetView<BookController> {
           currentStep: controller.currentStep.value,
           onStepContinue: () {
             if (controller.currentStep.value == buildStep().length - 1) {
-             controller.saveBook(
+              controller.saveBook(
                   '',
                   1,
                   controller.accessionNoController.text.trim(),
@@ -25,12 +25,12 @@ class Steppers extends GetView<BookController> {
                   controller.billNoController.text.trim(),
                   controller.billDateController.text.trim(),
                   controller.costController.text.trim(),
-                  controller.callNoController.text.trim());
-             
+                  controller.callNoController.text.trim(),
+                  controller.stockedatController.text.trim());
+
               // _stepperAddBook(addEditFlag:1, docId:'');
 
-             
-              print("Send");
+              // print("Send");
             } else {
               controller.currentStep.value++;
             }
@@ -168,6 +168,14 @@ class Steppers extends GetView<BookController> {
               const SizedBox(
                 height: 8,
               ),
+              TextFormField(
+                controller: controller.stockedatController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Stocked At"),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
             ],
           ),
           isActive: controller.currentStep.value >= 1,
@@ -194,7 +202,10 @@ class Steppers extends GetView<BookController> {
               ),
               Text("Source:${controller.sourceController.text}"),
               Text("Bill Number: ${controller.billNoController.text}"),
-              Text("Bill Date: ${controller.costController.text}"),
+              Text("Bill Date: ${controller.billDateController.text}"),
+              Text("Cost: ${controller.costController.text}"),
+              Text("Stocked at: ${controller.stockedatController.text}"),
+
             ],
           ),
           isActive: controller.currentStep.value >= 2)
@@ -202,19 +213,4 @@ class Steppers extends GetView<BookController> {
   }
 }
 
-// _stepperAddBook({int? addEditFlag, String? docId}) {
-//   controll saveBook
-//    controller.saveBook(
-//                   docId!,
-//                   addEditFlag!,
-//                   controller.accessionNoController.text.trim(),
-//                   controller.titleController.text.trim(),
-//                   controller.editionController.text.trim(),
-//                   controller.yearController.text.trim(),
-//                   controller.pagesController.text.trim(),
-//                   controller.sourceController.text.trim(),
-//                   controller.billNoController.text.trim(),
-//                   controller.billDateController.text.trim(),
-//                   controller.costController.text.trim(),
-//                   controller.callNoController.text.trim());
-// }
+

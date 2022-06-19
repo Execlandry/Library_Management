@@ -10,8 +10,9 @@ class BookModel {
   String? source;
   String? billNo;
   String? billDate;
-  int? cost;
+  String? cost;
   String? callNo;
+  String? stockedAt;
 
   BookModel(
       {this.docId,
@@ -24,7 +25,8 @@ class BookModel {
       this.billNo,
       this.billDate,
       this.cost,
-      this.callNo});
+      this.callNo,
+      this.stockedAt});
 
   BookModel.fromMap(DocumentSnapshot data) {
     docId = data.id;
@@ -38,5 +40,6 @@ class BookModel {
     billDate = data["billDate"];
     cost = data["cost"];
     callNo = data["callNo"];
+    stockedAt = data["stockedAt"];
   }
 }
