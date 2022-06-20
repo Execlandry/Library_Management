@@ -24,6 +24,8 @@ class UsersController extends GetxController {
 
 /*get the stream from usermodel and store it as list in users variable */
   RxList<UserModel> users = RxList<UserModel>([]);
+  RxList<UserModel> foundUsers = RxList<UserModel>([]);
+
 
   // var searchList = List.empty(growable: true).obs;
   // RxList<List> searchList = RxList<List>([]);
@@ -43,7 +45,7 @@ class UsersController extends GetxController {
 
     collectionReference = firebaseFirestore.collection("users");
     users.bindStream(getAllUsers());
-    // searchList.add(getAllUsers());
+    foundUsers.value = users;
   }
 
   String? validateName(String value) {
@@ -150,9 +152,48 @@ class UsersController extends GetxController {
     userDataSearchController.clear();
   }
 
+  void filterUsers(String userName) {
+    List<UserModel> results = [];
+    if (userName.isEmpty) {
+      results = users;
+    } else {
+      results = users
+          .where((user) =>
+              user.name
+                  .toString()
+                  .toLowerCase()
+                  .contains(userName.toLowerCase()) ||
+              user.email
+                  .toString()
+                  .toLowerCase()
+                  .contains(userName.toLowerCase()) ||
+              user.enrollment
+                  .toString()
+                  .toLowerCase()
+                  .contains(userName.toLowerCase()) ||
+              user.department
+                  .toString()
+                  .toLowerCase()
+                  .contains(userName.toLowerCase()) ||
+              // user.pages
+              //     .toString()
+              //     .toLowerCase()
+              //     .contains(userName.toLowerCase()) ||
+              user.year
+                  .toString()
+                  .toLowerCase()
+                  .contains(userName.toLowerCase()))
+          .toList();
+    }
+    foundUsers.value = results;
+  }
 //iterating or maping through data in database
   Stream<List<UserModel>> getAllUsers() => collectionReference.snapshots().map(
       (query) => query.docs.map((item) => UserModel.fromMap(item)).toList());
+
+
+
+  
 
   void deleteData(String docId) {
     CustomFullScreenDialog.showDialog();

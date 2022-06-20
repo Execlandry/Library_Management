@@ -89,20 +89,20 @@ class UserCard extends GetView<UsersController> {
                     ),
                   ],
                 ),
-                // Row(
-                //   children: [
-                //     IconButton(
-                //       onPressed: () {
-                //     // displayDeleteDialog(controller.users[index].docId!);
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                    // displayDeleteDialog(controller.users[index].docId!);
 
-                //       },
-                //       icon: Icon(
-                //         Icons.delete_forever,
-                //         color: Colors.red,
-                //       ),
-                //     ),
-                //   ],
-                // ),
+                      },
+                      icon: Icon(
+                        Icons.delete_forever,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

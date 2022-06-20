@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/pages/userUi/book_card.dart';
 import 'package:library_management/pages/userUi/book_page.dart';
+import 'package:library_management/pages/userUi/searchbar.dart';
 // import 'package:pet_ui/configuration.dart';
 // import 'package:pet_ui/screen2.dart';
 
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   double scaleFactor = 1;
 
   bool isDrawerOpen = false;
-  TextEditingController _searchController = TextEditingController();
+  // TextEditingController _searchController = TextEditingController();
   // List _allResult = [];
 
   //  String? email;
@@ -115,60 +116,7 @@ class _HomePageState extends State<HomePage> {
           ),
           // SizedBox(height: 50),
 
-          Column(
-            children: [
-              Stack(children: [
-                Container(
-                  height: size.height * 0.2 - 27,
-                  decoration: BoxDecoration(
-                    color: AppColor.kprimaryColor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(36),
-                      bottomRight: Radius.circular(36),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    height: 54,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          // color: AppColor.kprimaryColor.withOpacity(0.23),
-                          offset: Offset(0, 10),
-                          blurRadius: 50,
-                        ),
-                      ],
-                    ),
-                    child: TextField(
-                      controller: _searchController,
-                      onChanged: (value) {},
-                      decoration: InputDecoration(
-                        hintText: "Search a Book",
-                        hintStyle: TextStyle(
-                          color: Colors.black.withOpacity(0.5),
-                        ),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
-            ],
-          ),
+         SearchBar(),
           SizedBox(
             height: 20,
           ),

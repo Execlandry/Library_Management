@@ -13,7 +13,7 @@ class UsersPage extends GetView<UsersController> {
     return Obx(
       (() => ListView.builder(
             shrinkWrap: true,
-            itemCount: controller.users.length,
+            itemCount: controller.foundUsers.value.length,
             itemBuilder: (context, index) => Card(
               shadowColor: Colors.cyan,
               shape: RoundedRectangleBorder(
@@ -46,16 +46,25 @@ class UsersPage extends GetView<UsersController> {
                       docId: controller.users[index].docId!);
                 },
                 child: UserCard(
-                  fullName: controller.users[index].name!.capitalize!.trim(),
-                  email: controller.users[index].email!.trim(),
+                  fullName: controller.foundUsers[index].name!.capitalize!.trim(),
+                  email: controller.foundUsers[index].email!.trim(),
                   department:
-                      controller.users[index].department!.capitalize!.trim() +
+                      controller.foundUsers[index].department!.capitalize!.trim() +
                           " Department",
                   contactNumber: controller.users[index].contactNumber!.trim(),
-                  enrollment: controller.users[index].enrollment!.trim(),
-                  year: controller.users[index].year!.trim(),
+                  enrollment: controller.foundUsers[index].enrollment!.trim(),
+                  year: controller.foundUsers[index].year!.trim(),
                 ),
               ),
+                //  IconButton(
+                //   icon: Icon(
+                //     Icons.delete_forever,
+                //     color: Colors.red,
+                //   ),
+                //   onPressed: () {
+                //     displayDeleteDialog(controller.users[index].docId!);
+                //   },
+                // ),
 
               // child: ListTile(
               //   title: Text(controller.users[index].name!),
@@ -66,15 +75,6 @@ class UsersPage extends GetView<UsersController> {
               //       style: TextStyle(fontWeight: FontWeight.bold),
               //     ),
               //     backgroundColor: Colors.yellow,
-              //   ),
-              //   trailing: IconButton(
-              //     icon: Icon(
-              //       Icons.delete_forever,
-              //       color: Colors.red,
-              //     ),
-              //     onPressed: () {
-              //       displayDeleteDialog(controller.users[index].docId!);
-              //     },
               //   ),
               //   onTap: () {
               //     controller.nameController.text =

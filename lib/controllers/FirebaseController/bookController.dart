@@ -26,6 +26,8 @@ class BookController extends GetxController {
   late CollectionReference collectionReference;
 
   RxList<BookModel> books = RxList<BookModel>([]);
+  //search
+  RxList<BookModel> foundBooks = RxList<BookModel>([]);
 
   @override
   void onInit() {
@@ -45,6 +47,8 @@ class BookController extends GetxController {
 
     collectionReference = firebaseFirestore.collection("books");
     books.bindStream(getAllBooks());
+    //search
+    foundBooks.value = books;
   }
 
   void saveBook(
@@ -122,6 +126,45 @@ class BookController extends GetxController {
     stockedatController.dispose();
   }
 
+  void filterBooks(String bookName) {
+    List<BookModel> results = [];
+    if (bookName.isEmpty) {
+      results = books;
+    } else {
+      results = books
+          .where((book) =>
+              book.title
+                  .toString()
+                  .toLowerCase()
+                  .contains(bookName.toLowerCase()) ||
+              book.accessionNo
+                  .toString()
+                  .toLowerCase()
+                  .contains(bookName.toLowerCase()) ||
+              book.stockedAt
+                  .toString()
+                  .toLowerCase()
+                  .contains(bookName.toLowerCase()) ||
+              book.callNo
+                  .toString()
+                  .toLowerCase()
+                  .contains(bookName.toLowerCase()) ||
+              book.pages
+                  .toString()
+                  .toLowerCase()
+                  .contains(bookName.toLowerCase()) ||
+              book.year
+                  .toString()
+                  .toLowerCase()
+                  .contains(bookName.toLowerCase()))
+          .toList();
+    }
+    foundBooks.value = results;
+  }
+
+  Stream<List<BookModel>> getAllBooks() => collectionReference.snapshots().map(
+      (query) => query.docs.map((item) => BookModel.fromMap(item)).toList());
+
   void clearEditingControllers() {
     accessionNoController.clear();
     titleController.clear();
@@ -135,6 +178,4 @@ class BookController extends GetxController {
     callNoController.clear();
     stockedatController.clear();
   }
-  Stream<List<BookModel>> getAllBooks() => collectionReference.snapshots().map(
-      (query) => query.docs.map((item) => BookModel.fromMap(item)).toList());
 }

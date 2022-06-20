@@ -34,7 +34,7 @@ class UsersDisplayPage extends GetView<UsersController> {
           ),
         ),
         TextField(
-          onChanged: (value) {},
+          onChanged: (value) => controller.filterUsers(value),
           decoration: InputDecoration(
             hintText: "Search a User",
             hintStyle: TextStyle(

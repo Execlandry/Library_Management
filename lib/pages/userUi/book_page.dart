@@ -10,16 +10,16 @@ class BookPage extends GetView<BookController> {
     return Obx(
       (() => ListView.builder(
           shrinkWrap: true,
-          itemCount: controller.books.length,
+          itemCount: controller.foundBooks.value.length,
           itemBuilder: ((context, index) => BookCard(
-                accession:
-                    controller.books[index].accessionNo!.capitalize!.trim(),
-                title: controller.books[index].title!.capitalize!.trim(),
-                callno: controller.books[index].callNo!.trim(),
-                edition: controller.books[index].edition!.trim(),
-                pages: controller.books[index].pages!.trim(),
-                year: controller.books[index].year!.trim(),
-                stocked: controller.books[index].stockedAt!.trim(),
+                accession: controller.foundBooks[index].accessionNo!.capitalize!
+                    .trim(),
+                title: controller.foundBooks[index].title!.capitalize!.trim(),
+                callno: controller.foundBooks[index].callNo!.trim(),
+                edition: controller.foundBooks[index].edition!.trim(),
+                pages: controller.foundBooks[index].pages!.trim(),
+                year: controller.foundBooks[index].year!.trim(),
+                stocked: controller.foundBooks[index].stockedAt!.trim(),
               )))),
     );
   }
