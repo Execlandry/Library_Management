@@ -26,6 +26,8 @@ class UsersPage extends GetView<UsersController> {
               elevation: 12,
               color: Color.fromARGB(255, 150, 157, 177),
               child: GestureDetector(
+                onLongPress: () =>
+                    displayDeleteDialog(controller.users[index].docId!),
                 onTap: () {
                   controller.nameController.text =
                       controller.users[index].name!;
@@ -46,60 +48,21 @@ class UsersPage extends GetView<UsersController> {
                       docId: controller.users[index].docId!);
                 },
                 child: UserCard(
-                  fullName: controller.foundUsers[index].name!.capitalize!.trim(),
+                  fullName:
+                      controller.foundUsers[index].name!.capitalize!.trim(),
                   email: controller.foundUsers[index].email!.trim(),
-                  department:
-                      controller.foundUsers[index].department!.capitalize!.trim() +
-                          " Department",
+                  department: controller
+                          .foundUsers[index].department!.capitalize!
+                          .trim() +
+                      " Department",
                   contactNumber: controller.users[index].contactNumber!.trim(),
                   enrollment: controller.foundUsers[index].enrollment!.trim(),
                   year: controller.foundUsers[index].year!.trim(),
                 ),
               ),
-                //  IconButton(
-                //   icon: Icon(
-                //     Icons.delete_forever,
-                //     color: Colors.red,
-                //   ),
-                //   onPressed: () {
-                //     displayDeleteDialog(controller.users[index].docId!);
-                //   },
-                // ),
-
-              // child: ListTile(
-              //   title: Text(controller.users[index].name!),
-              //   subtitle: Text(controller.users[index].email!),
-              //   leading: CircleAvatar(
-              //     child: Text(
-              //       controller.users[index].name!.substring(0, 1).capitalize!,
-              //       style: TextStyle(fontWeight: FontWeight.bold),
-              //     ),
-              //     backgroundColor: Colors.yellow,
-              //   ),
-              //   onTap: () {
-              //     controller.nameController.text =
-              //         controller.users[index].name!;
-              //     controller.emailController.text =
-              //         controller.users[index].email!;
-              //     controller.departmentController.text =
-              //         controller.users[index].department!;
-              //     controller.contactController.text =
-              //         controller.users[index].contactNumber!;
-              //     controller.enrollmentController.text =
-              //         controller.users[index].enrollment!;
-              //     controller.yearController.text =
-              //         controller.users[index].year!;
-
-              //     _buildAddEditUsersView(
-              //         text: 'Update',
-              //         addEditFlag: 2,
-              //         docId: controller.users[index].docId!);
-              //   },
-              // ),
             ),
           )),
     );
-    // ],
   }
 
   _buildAddEditUsersView({String? text, int? addEditFlag, String? docId}) {
@@ -275,7 +238,6 @@ class UsersPage extends GetView<UsersController> {
       onCancel: () {},
       onConfirm: () {
         controller.deleteData(docId);
-        
       },
     );
   }

@@ -23,22 +23,7 @@ class _HomePageState extends State<HomePage> {
   double scaleFactor = 1;
 
   bool isDrawerOpen = false;
-  // TextEditingController _searchController = TextEditingController();
-  // List _allResult = [];
-
-  //  String? email;
-  // String? name;
-
-  // getBooksStream() async {
-  //   final uid = await FirebaseAuth.instance.currentUser;
-  //   // var data = await FirebaseFirestore.instance
-  //   // .collection("books").doc(uid).get();
-
-  //   setState(() {
-  //     // _allResult = data.document;
-  //   });
-  // }
-
+  
   @override
   Widget build(BuildContext context) {
     // final user = FirebaseAuth.instance.currentUser;

@@ -62,5 +62,6 @@ class DefaultFirebaseOptions {
     storageBucket: 'libflut.appspot.com',
     iosClientId: '903690053260-5dndknegv0cdqi3rqja9o5s5js8c27dh.apps.googleusercontent.com',
     iosBundleId: 'com.example.libraryManagement',
+    
   );
 }

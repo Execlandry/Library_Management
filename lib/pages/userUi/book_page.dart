@@ -9,18 +9,20 @@ class BookPage extends GetView<BookController> {
   Widget build(BuildContext context) {
     return Obx(
       (() => ListView.builder(
-          shrinkWrap: true,
-          itemCount: controller.foundBooks.value.length,
-          itemBuilder: ((context, index) => BookCard(
-                accession: controller.foundBooks[index].accessionNo!.capitalize!
-                    .trim(),
-                title: controller.foundBooks[index].title!.capitalize!.trim(),
-                callno: controller.foundBooks[index].callNo!.trim(),
-                edition: controller.foundBooks[index].edition!.trim(),
-                pages: controller.foundBooks[index].pages!.trim(),
-                year: controller.foundBooks[index].year!.trim(),
-                stocked: controller.foundBooks[index].stockedAt!.trim(),
-              )))),
+            shrinkWrap: true,
+            itemCount: controller.foundBooks.value.length,
+            itemBuilder: ((context, index) => BookCard(
+                  accession: controller
+                      .foundBooks[index].accessionNo!.capitalize!
+                      .trim(),
+                  title: controller.foundBooks[index].title!.capitalize!.trim(),
+                  callno: controller.foundBooks[index].callNo!.trim(),
+                  edition: controller.foundBooks[index].edition!.trim(),
+                  pages: controller.foundBooks[index].pages!.trim(),
+                  year: controller.foundBooks[index].year!.trim(),
+                  stocked: controller.foundBooks[index].stockedAt!.trim(),
+                )),
+          )),
     );
   }
 }
