@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:library_management/pages/author/view.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
@@ -32,6 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: AppRoutes.welcomeRoute,
+      
       // home: MainPage(),
 
       title: 'Library',
@@ -56,4 +60,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
 
