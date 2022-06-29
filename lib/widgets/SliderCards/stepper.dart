@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/controllers/FirebaseController/bookController.dart';
+import 'package:library_management/pages/dashboard/DisplayData/AddBooks/widgets/author_dropdown.dart';
 
 class Steppers extends GetView<BookController> {
   const Steppers({Key? key}) : super(key: key);
@@ -18,6 +19,8 @@ class Steppers extends GetView<BookController> {
                   1,
                   controller.accessionNoController.text.trim(),
                   controller.titleController.text.trim(),
+                  controller.authorController.text.trim(),
+                  controller.placeController.text.trim(),
                   controller.editionController.text.trim(),
                   controller.yearController.text.trim(),
                   controller.pagesController.text.trim(),
@@ -95,10 +98,21 @@ class Steppers extends GetView<BookController> {
                 height: 8,
               ),
               TextFormField(
-                controller: controller.editionController,
+                controller: controller.authorController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), labelText: "Edition"),
+                    border: OutlineInputBorder(),
+                    labelText: "Author/Publisher"),
               ),
+              const SizedBox(
+                height: 8,
+              ),
+              TextFormField(
+                controller: controller.placeController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Place (If publisher exist)"),
+              ),
+              // AuthorsDropdown(),
               const SizedBox(
                 height: 8,
               ),
@@ -140,6 +154,14 @@ class Steppers extends GetView<BookController> {
                 controller: controller.sourceController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), labelText: "Source"),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              TextFormField(
+                controller: controller.editionController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Edition"),
               ),
               const SizedBox(
                 height: 8,
@@ -193,6 +215,12 @@ class Steppers extends GetView<BookController> {
               Text(
                 "Book Title: ${controller.titleController.text}",
               ),
+              Text(
+                "Author: ${controller.authorController.text}",
+              ),
+              Text(
+                "Place : ${controller.placeController.text}",
+              ),
               Text("Edition: ${controller.editionController.text}"),
               Text("Year:${controller.yearController.text}"),
               Text("Pages: ${controller.pagesController.text}"),
@@ -205,12 +233,9 @@ class Steppers extends GetView<BookController> {
               Text("Bill Date: ${controller.billDateController.text}"),
               Text("Cost: ${controller.costController.text}"),
               Text("Stocked at: ${controller.stockedatController.text}"),
-
             ],
           ),
           isActive: controller.currentStep.value >= 2)
     ];
   }
 }
-
-

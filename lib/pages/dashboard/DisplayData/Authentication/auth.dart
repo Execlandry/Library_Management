@@ -104,7 +104,7 @@ class _AuthPageState extends State<AuthPage> {
                 controller: passController,
                 decoration: InputDecoration(
                     labelText: "Password",
-                    hintText: "123",
+                    hintText: "Enter strong password",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20))),
               ),

@@ -64,7 +64,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                     child: Center(
                       child: Text(
-                        "skip",
+                        "Skip",
                         style: TextStyle(
                           color: Color.fromARGB(255, 3, 71, 62),
                           fontWeight: FontWeight.bold,
@@ -114,7 +114,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                           child: Center(
                             child: Text(
-                              "done",
+                              "Done",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 3, 71, 62),
                                 fontWeight: FontWeight.bold,
@@ -153,7 +153,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                           child: Center(
                             child: Text(
-                              "next",
+                              "Next",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 3, 71, 62),
                                 fontWeight: FontWeight.bold,

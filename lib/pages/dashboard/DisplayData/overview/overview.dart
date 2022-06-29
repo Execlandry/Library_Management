@@ -6,7 +6,6 @@ import 'package:library_management/pages/dashboard/DisplayData/overview/Overview
 import 'package:library_management/pages/dashboard/DisplayData/overview/Overview_Screens/overview_cards_small.dart';
 import 'package:library_management/pages/dashboard/DisplayData/overview/charts_screen/chart_screens/revenue_section_large.dart';
 import 'package:library_management/pages/dashboard/DisplayData/overview/charts_screen/chart_screens/revenue_section_small.dart';
-import 'package:library_management/pages/dashboard/DisplayData/overview/charts_screen/display_data_widget.dart';
 import 'package:library_management/widgets/CustomText/custom_text.dart';
 
 import '../../../../controllers/controller.dart';
@@ -59,7 +58,9 @@ class _OverViewPage extends State<OverViewPage> {
                   else
                     RevenueSectionSmall(),
 
-                  DisplayDataWidget(),
+                  // SizedBox(height: 500, width: 500, child: AuthorsDropdown()),
+                  // DisplayDataWidget(),
+                  // Expanded(child: BookPage()),
                 ],
               ),
             ),

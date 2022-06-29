@@ -18,7 +18,7 @@ class UserModel {
       this.contactNumber,
       this.enrollment,
       this.year,
-      this.role = "user"});
+      this.role });
 
   UserModel.fromMap(DocumentSnapshot data) {
     docId = data.id;

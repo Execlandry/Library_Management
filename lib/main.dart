@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_management/controllers/FirebaseController/authController.dart';
+import 'package:library_management/controllers/FirebaseController/authorController.dart';
 import 'package:library_management/controllers/FirebaseController/bookController.dart';
 import 'package:library_management/controllers/LocalNavigation/navigation_controller.dart';
 import 'package:library_management/controllers/menu_controller.dart';
@@ -16,6 +17,7 @@ import 'package:library_management/home_landing.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/introUi/welcome_page.dart';
 import 'package:library_management/routes/routes.dart';
+import 'package:library_management/widgets/Refresh/liquid_pull.dart';
 
 import 'common/app_colors.dart';
 import 'controllers/FirebaseController/usersController.dart';
@@ -31,6 +33,7 @@ void main() async {
     Get.put(NavigationController());
     Get.put(BookController());
     Get.put(UsersController());
+    Get.put(AuthorController());
   });
 
   runApp(const MyApp());
@@ -66,7 +69,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -86,17 +88,15 @@ class MainPage extends StatelessWidget {
                   // final user = userDoc!.data();
                   final user = userDoc!;
 
-                  if (user['role'] == 'user') {
-                  
-                    return HomeLanding();
-                
-                  } else {
+                  if (user['role'] == 'admin') {
                     return DashLanding();
+                  } else {
+                    return HomeLanding();
                   }
                 } else {
                   return Material(
                     child: Center(
-                      child: CircularProgressIndicator(),
+                      child: LiquidRefresh(),
                     ),
                   );
                 }

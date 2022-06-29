@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:library_management/dash_landing.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
+import 'package:library_management/pages/dashboard/DisplayData/Authentication/admin_reg.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/pages/introUi/welcome_page.dart';
@@ -48,11 +49,11 @@ class AppRoutes {
     GetPage(
         name: homeRoute,
         page: () => HomeLanding(
-              // email: AuthController.instance.auth.currentUser!.email,
-              // name: AuthController.instance.auth.currentUser!.name,
+            // email: AuthController.instance.auth.currentUser!.email,
+            // name: AuthController.instance.auth.currentUser!.name,
             )),
     GetPage(name: authenticationPageRoute, page: () => AuthPage()),
-    GetPage(name: registerRoute, page: () => RegisterPage()),
+    GetPage(name: registerRoute, page: () => AdminRegisterPage()),
   ];
 }
 

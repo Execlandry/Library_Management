@@ -48,52 +48,32 @@ class _DrawerScreenState extends State<DrawerScreen> {
               )
             ],
           ),
-          Column(
-            children: drawerItems
-                .map((element) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            element['icon'],
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(element['title'],
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20))
-                        ],
-                      ),
-                    ))
-                .toList(),
-          ),
+          // Column(
+          //   children: drawerItems
+          //       .map((element) => Padding(
+          //             padding: const EdgeInsets.all(8.0),
+          //             child: Row(
+          //               children: [
+          //                 Icon(
+          //                   element['icon'],
+          //                   color: Colors.white,
+          //                   size: 30,
+          //                 ),
+          //                 SizedBox(
+          //                   width: 10,
+          //                 ),
+          //                 Text(element['title'],
+          //                     style: TextStyle(
+          //                         color: Colors.white,
+          //                         fontWeight: FontWeight.bold,
+          //                         fontSize: 20))
+          //               ],
+          //             ),
+          //           ))
+          //       .toList(),
+          // ),
           Row(
             children: [
-              Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.offAllNamed(AppRoutes.rootRoute);
-                },
-                child: Text(
-                  'Settings',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
               Container(
                 width: 2,
                 height: 20,
@@ -102,15 +82,39 @@ class _DrawerScreenState extends State<DrawerScreen> {
               SizedBox(
                 width: 10,
               ),
+
+              // SizedBox(
+              //   width: 10,
+              // ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Get.offAllNamed(AppRoutes.rootRoute);
+              //   },
+              //   child: Text(
+              //     'Settings',
+              //     style: TextStyle(
+              //         color: Colors.white, fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+
               GestureDetector(
                 onTap: () {
                   AuthController.instance.logOut();
                 },
-                child: Text(
-                  'Log out',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
+                child: Row(children: [
+                  Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Log out',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ]),
               )
             ],
           )

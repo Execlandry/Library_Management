@@ -13,6 +13,8 @@ class BookController extends GetxController {
   var currentStep = 0.obs;
   late TextEditingController accessionNoController,
       titleController,
+      authorController,
+      placeController,
       editionController,
       yearController,
       pagesController,
@@ -35,6 +37,8 @@ class BookController extends GetxController {
     super.onInit();
     accessionNoController = TextEditingController();
     titleController = TextEditingController();
+    authorController = TextEditingController();
+    placeController = TextEditingController();
     editionController = TextEditingController();
     yearController = TextEditingController();
     pagesController = TextEditingController();
@@ -56,6 +60,8 @@ class BookController extends GetxController {
       int addEditFlag,
       String accessionNo,
       String title,
+      String author,
+      String place,
       String edition,
       String year,
       String pages,
@@ -77,6 +83,8 @@ class BookController extends GetxController {
       collectionReference.add({
         'accessionNo': accessionNo,
         'title': title,
+        'author': author,
+        'place': place,
         'edition': edition,
         'year': year,
         'pages': pages,
@@ -115,6 +123,8 @@ class BookController extends GetxController {
   void onClose() {
     accessionNoController.dispose();
     titleController.dispose();
+    authorController.dispose();
+    placeController.dispose();
     editionController.dispose();
     yearController.dispose();
     pagesController.dispose();
@@ -156,6 +166,10 @@ class BookController extends GetxController {
               book.year
                   .toString()
                   .toLowerCase()
+                  .contains(bookName.toLowerCase()) ||
+              book.author
+                  .toString()
+                  .toLowerCase()
                   .contains(bookName.toLowerCase()))
           .toList();
     }
@@ -168,6 +182,8 @@ class BookController extends GetxController {
   void clearEditingControllers() {
     accessionNoController.clear();
     titleController.clear();
+    authorController.clear();
+    placeController.clear();
     editionController.clear();
     yearController.clear();
     pagesController.clear();

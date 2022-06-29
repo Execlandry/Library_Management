@@ -39,15 +39,13 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           Expanded(
             child: Container(),
           ),
-          GestureDetector(
-            onTap: (){
-                  AuthController.instance.logOut();
-
+          ElevatedButton(
+            onPressed: () {
+              AuthController.instance.logOut();
             },
-            
             child: CustomText(
               text: "Logout",
-              color: AppColor.lightGrey,
+              color: AppColor.black,
               weight: FontWeight.bold,
               size: 16,
             ),
@@ -57,31 +55,34 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           //     Icons.settings,
           //     color: AppColor.dark.withOpacity(.7),
           //   ),
-            // onPressed: () {},
+          // onPressed: () {},
           // ),
-          Stack(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.notifications,
-                  color: AppColor.dark.withOpacity(.7),
-                ),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 7,
-                right: 7,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  padding: EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: AppColor.light, width: 2),
-                  ),
-                ),
-              )
-            ],
+          // Stack(
+          //   children: [
+          //     // IconButton(
+          //     //   icon: Icon(
+          //     //     Icons.notifications,
+          //     //     color: AppColor.dark.withOpacity(.7),
+          //     //   ),
+          //     //   onPressed: () {},
+          //     // ),
+          //     Positioned(
+          //       top: 7,
+          //       right: 7,
+          //       child: Container(
+          //         width: 12,
+          //         height: 12,
+          //         padding: EdgeInsets.all(4),
+          //         decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(30),
+          //           border: Border.all(color: AppColor.light, width: 2),
+          //         ),
+          //       ),
+          //     )
+          //   ],
+          // ),
+          SizedBox(
+            width: 20,
           ),
           Container(
             width: 1,
@@ -89,14 +90,14 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             color: AppColor.lightGrey,
           ),
           SizedBox(
-            width: 24,
+            width: 12,
           ),
-          CustomText(
-            text: "Execlandry",
-            color: AppColor.lightGrey,
-            weight: FontWeight.bold,
-            size: 16,
-          ),
+          // CustomText(
+          //   text: "Execlandry",
+          //   color: AppColor.lightGrey,
+          //   weight: FontWeight.bold,
+          //   size: 16,
+          // ),
           SizedBox(
             width: 16,
           ),

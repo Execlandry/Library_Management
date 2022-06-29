@@ -43,11 +43,22 @@ class UserCard extends GetView<UsersController> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              department,
-              style: TextStyle(
-                color: Colors.white,
-              ),
+            Row(
+              children: [
+                Text(
+                  department,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  year + " year",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
             Text(
               enrollment.toString(),

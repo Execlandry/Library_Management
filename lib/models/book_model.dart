@@ -4,6 +4,8 @@ class BookModel {
   String? docId;
   String? accessionNo;
   String? title;
+  String? author;
+  String? place;
   String? edition;
   String? year;
   String? pages;
@@ -18,6 +20,8 @@ class BookModel {
       {this.docId,
       this.accessionNo,
       this.title,
+      this.author,
+      this.place,
       this.edition,
       this.year,
       this.pages,
@@ -32,6 +36,8 @@ class BookModel {
     docId = data.id;
     accessionNo = data["accessionNo"];
     title = data["title"];
+    author = data["author"];
+    place = data["place"];
     edition = data["edition"];
     year = data["year"];
     pages = data["pages"];

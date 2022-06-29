@@ -15,6 +15,9 @@ class BookPage extends GetView<BookController> {
                   accession: controller
                       .foundBooks[index].accessionNo!.capitalize!
                       .trim(),
+                  author:
+                      controller.foundBooks[index].author!.capitalize!.trim(),
+                  place: controller.foundBooks[index].place!.capitalize!.trim(),
                   title: controller.foundBooks[index].title!.capitalize!.trim(),
                   callno: controller.foundBooks[index].callNo!.trim(),
                   edition: controller.foundBooks[index].edition!.trim(),

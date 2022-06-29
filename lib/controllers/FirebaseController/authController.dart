@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:library_management/routes/routes.dart';
+import 'package:library_management/widgets/Refresh/liquid_pull.dart';
+
+import '../../widgets/CustomMessage/custom_message.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -79,6 +82,7 @@ class AuthController extends GetxController {
   void login(String email, password) async {
     try {
       // showLoading();
+      LiquidRefresh();
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((result) {
@@ -90,10 +94,11 @@ class AuthController extends GetxController {
       });
     } catch (e) {
       debugPrint(e.toString());
-      // showCustomSnackBar(
-      //   e.toString(),
-      //   title: "Login failed",
-      // );
+      showCustomSnackBar(
+        // e.toString(),
+        "Invalid Credentials",
+        title: "Login failed",
+      );
     }
   }
 

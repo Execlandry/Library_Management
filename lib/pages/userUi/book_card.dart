@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class BookCard extends StatelessWidget {
   final String accession;
   final String title;
+  final String author;
+  final String place;
   final String callno;
   final String pages;
   final String year;
@@ -14,6 +16,8 @@ class BookCard extends StatelessWidget {
     Key? key,
     required this.accession,
     required this.title,
+    required this.author,
+    required this.place,
     required this.callno,
     required this.pages,
     required this.year,
@@ -63,6 +67,15 @@ class BookCard extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 30,
+                ),
+                Text(
+                  'Author/Publisher: ' + author,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Text(
                   'Call No: ' + callno,
