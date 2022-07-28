@@ -1,143 +1,112 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:library_management/controllers/FirebaseController/authController.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:library_management/common/app_colors.dart';
+import 'package:library_management/pages/userUi/book_card.dart';
+import 'package:library_management/pages/userUi/book_page.dart';
+import 'package:library_management/pages/userUi/searchbar.dart';
+// import 'package:pet_ui/configuration.dart';
+// import 'package:pet_ui/screen2.dart';
 
-import '../../common/app_colors.dart';
-import '../../utils/auth_helper.dart';
-import '../../widgets/CustomText/custom_text.dart';
-
-class HomePage extends StatelessWidget {
-  String? email;
-  HomePage({Key? key, required this.email}) : super(key: key);
-
+class HomePage extends StatefulWidget {
+  HomePage({
+    Key? key,
+  }) : super(key: key);
   @override
-  // State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  double xOffset = 0;
+  double yOffset = 0;
+  double scaleFactor = 1;
 
-// class _HomePageState extends State<HomePage> {
-  // final user = FirebaseAuth.instance.currentUser!;
-
+  bool isDrawerOpen = false;
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFA7FFEB),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Welcome!',
-                        style: TextStyle(
-                          color: Color(0xFF37474F),
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                    ],
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFF00796B),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: EdgeInsets.all(12),
-                    child: Icon(
-                      Icons.notifications,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-
-              SizedBox(
-                height: 25,
-              ),
-
-              //Search Bar
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFF00796B),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                padding: EdgeInsets.all(12),
-                child: Row(
+    // final user = FirebaseAuth.instance.currentUser;
+    Size size = MediaQuery.of(context).size;
+    return AnimatedContainer(
+      transform: Matrix4.translationValues(xOffset, yOffset, 0)
+        ..scale(scaleFactor)
+        ..rotateY(isDrawerOpen ? -0.5 : 0),
+      duration: Duration(milliseconds: 250),
+      decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0)),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                isDrawerOpen
+                    ? IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () {
+                          setState(() {
+                            xOffset = 0;
+                            yOffset = 0;
+                            scaleFactor = 1;
+                            isDrawerOpen = false;
+                          });
+                        },
+                      )
+                    : IconButton(
+                        icon: Icon(Icons.menu),
+                        onPressed: () {
+                          setState(() {
+                            xOffset = 230;
+                            yOffset = 150;
+                            scaleFactor = 0.6;
+                            isDrawerOpen = true;
+                          });
+                        }),
+                Column(
                   children: [
-                    Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
                     Text(
-                      'Search',
+                      'Welcome !',
                       style: TextStyle(
-                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
-              ),
+                    // Row(
+                    // children: [
+                    // Icon(
+                    // Icons.location_on,
+                    // color: primaryGreen,
+                    // ),
+                    // if(user != null ){
+                    //   Text(),
+                    // }
+                    // else{
 
-              Spacer(),
-              Container(
-                child: Column(
-                  children: [
-                    Text(email!),
-                    SizedBox(height: 10),
-                    InkWell(
-                      onTap: () {
-                        AuthController.instance.logOut();
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColor.active,
-                            borderRadius: BorderRadius.circular(20)),
-                        alignment: Alignment.center,
-                        width: double.maxFinite,
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        child: CustomText(
-                          text: "Log Out",
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                    // child: InkWell(
-                    //   onTap: () {
-                    //     Get.offAllNamed(AppRoutes.authenticationPageRoute);
-                    //   },
-                    //   child: Container(
-                    //     decoration: BoxDecoration(
-                    //         color: AppColor.active,
-                    //         borderRadius: BorderRadius.circular(20)),
-                    //     alignment: Alignment.center,
-                    //     width: double.maxFinite,
-                    //     padding: EdgeInsets.symmetric(vertical: 16),
-                    //     child: CustomText(
-                    //       text: "AuthPage",
-                    //       color: Colors.white,
-                    //     ),
-                    //   ),
+                    // }
+                    // ],
                     // ),
                   ],
                 ),
-              ),
-              // SliderPageBody(),
-            ],
+                SizedBox(
+                  width: 40,
+                )
+                // CircleAvatar()
+              ],
+            ),
           ),
-        ),
+          // SizedBox(height: 50),
+
+         SearchBar(),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(child: BookPage()),
+        ],
       ),
     );
   }

@@ -3,6 +3,8 @@ import 'package:library_management/common/app_colors.dart';
 import 'package:library_management/helpers/screen_helper/responsive.dart';
 import 'package:library_management/widgets/CustomText/custom_text.dart';
 
+import '../../../controllers/FirebaseController/authController.dart';
+
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     AppBar(
       leading: !ResponsiveWidget.isSmallScreen(context)
@@ -37,36 +39,50 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           Expanded(
             child: Container(),
           ),
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: AppColor.dark.withOpacity(.7),
+          ElevatedButton(
+            onPressed: () {
+              AuthController.instance.logOut();
+            },
+            child: CustomText(
+              text: "Logout",
+              color: AppColor.black,
+              weight: FontWeight.bold,
+              size: 16,
             ),
-            onPressed: () {},
           ),
-          Stack(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.notifications,
-                  color: AppColor.dark.withOpacity(.7),
-                ),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 7,
-                right: 7,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  padding: EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: AppColor.light, width: 2),
-                  ),
-                ),
-              )
-            ],
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.settings,
+          //     color: AppColor.dark.withOpacity(.7),
+          //   ),
+          // onPressed: () {},
+          // ),
+          // Stack(
+          //   children: [
+          //     // IconButton(
+          //     //   icon: Icon(
+          //     //     Icons.notifications,
+          //     //     color: AppColor.dark.withOpacity(.7),
+          //     //   ),
+          //     //   onPressed: () {},
+          //     // ),
+          //     Positioned(
+          //       top: 7,
+          //       right: 7,
+          //       child: Container(
+          //         width: 12,
+          //         height: 12,
+          //         padding: EdgeInsets.all(4),
+          //         decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(30),
+          //           border: Border.all(color: AppColor.light, width: 2),
+          //         ),
+          //       ),
+          //     )
+          //   ],
+          // ),
+          SizedBox(
+            width: 20,
           ),
           Container(
             width: 1,
@@ -74,14 +90,14 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             color: AppColor.lightGrey,
           ),
           SizedBox(
-            width: 24,
+            width: 12,
           ),
-          CustomText(
-            text: "Execlandry",
-            color: AppColor.lightGrey,
-            weight: FontWeight.bold,
-            size: 16,
-          ),
+          // CustomText(
+          //   text: "Execlandry",
+          //   color: AppColor.lightGrey,
+          //   weight: FontWeight.bold,
+          //   size: 16,
+          // ),
           SizedBox(
             width: 16,
           ),

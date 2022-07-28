@@ -10,38 +10,38 @@ import '../../../../routes/routes.dart';
 import '../../../../widgets/CustomMessage/custom_message.dart';
 import '../../../../widgets/CustomText/custom_text.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class AdminRegisterPage extends StatefulWidget {
+  const AdminRegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<AdminRegisterPage> createState() => _AdminRegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _AdminRegisterPageState extends State<AdminRegisterPage> {
   @override
   Widget build(BuildContext context) {
-    var nameController = TextEditingController();
-    var emailController = TextEditingController();
-    var passController = TextEditingController();
-    var repassController = TextEditingController();
+    var _nameController = TextEditingController();
+    var _emailController = TextEditingController();
+    var _passController = TextEditingController();
+    var _repassController = TextEditingController();
 
-    bool registerValidate() {
+    bool adminRegisterValidate() {
       if (true) {
-        if (nameController.text.trim().isEmpty) {
+        if (_nameController.text.trim().isEmpty) {
           showCustomSnackBar("Type in your Name", title: "Name Empty!");
-        } else if (!GetUtils.isUsername(nameController.text.trim())) {
+        } else if (!GetUtils.isUsername(_nameController.text.trim())) {
           showCustomSnackBar("Type in your Name", title: "Name Invalid");
-        } else if (emailController.text.trim().isEmpty) {
+        } else if (_emailController.text.trim().isEmpty) {
           showCustomSnackBar("Type in your Email", title: "Email Empty!");
-        } else if (!GetUtils.isEmail(emailController.text.trim())) {
+        } else if (!GetUtils.isEmail(_emailController.text.trim())) {
           showCustomSnackBar("Type in your valid Email",
               title: "Invalid Email");
-        } else if (passController.text.trim().isEmpty) {
+        } else if (_passController.text.trim().isEmpty) {
           showCustomSnackBar("Type in your Password", title: "Password Empty!");
-        } else if (passController.text.trim().length < 6) {
+        } else if (_passController.text.trim().length < 6) {
           showCustomSnackBar("Password cannot be less than six characters",
               title: "Password to short!");
-        } else if (repassController.text.trim().isEmpty) {
+        } else if (_repassController.text.trim().isEmpty) {
           showCustomSnackBar("Type in your Password again",
               title: "Confirmation Password Empty!");
         }
@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
       return true;
     }
 
-    Future adduserDetailsFirst(
+    Future addadminuserDetailsFirst(
       String userId,
       email,
       name,
@@ -67,11 +67,11 @@ class _RegisterPageState extends State<RegisterPage> {
         "contact": "",
         "enrollment": "",
         "year": "",
-        "role": ""
+        "role": "admin"
       });
     }
 
-    Future register(String email, password) async {
+    Future adminRegister(String email, password) async {
       // showLoading();
       // LiquidRefresh();
       try {
@@ -80,13 +80,13 @@ class _RegisterPageState extends State<RegisterPage> {
             .then((result) {
           LiquidRefresh();
 
-          // updateUserName(nameController.text.trim(), currentUser)
+          // updateUserName(_nameController.text.trim(), currentUser)
 
           String _userId = result.user!.uid;
-          adduserDetailsFirst(
+          addadminuserDetailsFirst(
             _userId,
-            emailController.text.trim(),
-            nameController.text.trim(),
+            _emailController.text.trim(),
+            _nameController.text.trim(),
           );
           Get.toNamed(AppRoutes.homeRoute);
         });
@@ -100,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     bool passwordConfirmed() {
-      if (passController.text.trim() == repassController.text.trim()) {
+      if (_passController.text.trim() == _repassController.text.trim()) {
         return true;
       } else {
         return false;
@@ -109,10 +109,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
     @override
     void dispose() {
-      nameController.dispose();
-      emailController.dispose();
-      passController.dispose();
-      repassController.dispose();
+      _nameController.dispose();
+      _emailController.dispose();
+      _passController.dispose();
+      _repassController.dispose();
 
       // TODO: implement dispose
       super.dispose();
@@ -163,7 +163,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: nameController,
+                  controller: _nameController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       labelText: "Name",
@@ -176,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: emailController,
+                  controller: _emailController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       labelText: "Email",
@@ -189,7 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: passController,
+                  controller: _passController,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Password",
@@ -202,7 +202,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 TextField(
-                  controller: repassController,
+                  controller: _repassController,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Confirm Password",
@@ -234,9 +234,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    if (registerValidate() && passwordConfirmed()) {
-                      register(emailController.text.trim(),
-                          passController.text.trim());
+                    if (adminRegisterValidate() && passwordConfirmed()) {
+                      adminRegister(_emailController.text.trim(),
+                          _passController.text.trim());
                     }
                   },
                   child: Container(
