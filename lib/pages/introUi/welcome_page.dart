@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-// import 'package:library_management/widgets/IntroPages/IntroAnimation/anime.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../routes/routes.dart';
 import '../../widgets/IntroPages/intropage1.dart';
