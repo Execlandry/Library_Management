@@ -14,7 +14,7 @@ class Steppers extends GetView<BookController> {
           currentStep: controller.currentStep.value,
           onStepContinue: () {
             if (controller.currentStep.value == buildStep().length - 1) {
-              controller.saveBook(
+              controller.saveUpdateBook(
                   '',
                   1,
                   controller.accessionNoController.text.trim(),

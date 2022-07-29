@@ -7,7 +7,7 @@ class MenuController extends GetxController {
   static MenuController instance = Get.find();
 
   //By default the active page will be Overview page
-  var activeItem = OverViewPageDisplayName.obs;
+  var activeItem = overViewPageDisplayName.obs;
   var hoverItem = "".obs;
 
   changeActiveitemTo(String itemName) {
@@ -26,16 +26,16 @@ class MenuController extends GetxController {
   //calling the _customIcon method in this
   Widget returnIconFor(String itemName) {
     switch (itemName) {
-      case OverViewPageDisplayName:
+      case overViewPageDisplayName:
         return _customIcon(Icons.trending_up, itemName);
 
-      case AddBooksDisplayName:
+      case addBooksDisplayName:
         return _customIcon(Icons.book_outlined, itemName);
 
-      case UsersPageDisplayName:
+      case usersPageDisplayName:
         return _customIcon(Icons.people_outline, itemName);
 
-      case RegisterPageDisplayName:
+      case registerPageDisplayName:
         return _customIcon(Icons.exit_to_app, itemName);
 
       default:

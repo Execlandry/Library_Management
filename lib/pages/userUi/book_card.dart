@@ -53,7 +53,7 @@ class BookCard extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     Spacer(),
-                    Icon(Icons.person),
+                    Icon(Icons.add),
                   ],
                 ),
                 SizedBox(
