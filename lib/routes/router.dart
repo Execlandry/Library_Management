@@ -9,8 +9,8 @@ import '../pages/dashboard/DisplayData/overview/overview.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case Routes.overViewPageRoute:
-      return _getPageRoute(OverViewPage());
+    // case Routes.overViewPageRoute:
+    //   return _getPageRoute(OverViewPage());
 
     case Routes.allBooksDisplayRoute:
       return _getPageRoute(AllBooks());
@@ -19,10 +19,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(AddBooksPage());
     case Routes.studentsPageRoute:
       return _getPageRoute(UsersDisplayPage());
-    case Routes.registerRoute:
-      return _getPageRoute(RegisterPage());
+    // case Routes.registerRoute:
+    //   return _getPageRoute(RegisterPage());
     default:
-      return _getPageRoute(OverViewPage());
+      return _getPageRoute(AllBooks());
       // return _getPageRoute(RegisterPage());
 
   }

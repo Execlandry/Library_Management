@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:library_management/controllers/FirebaseController/bookController.dart';
-import 'package:library_management/pages/dashboard/DisplayData/AddBooks/widgets/author_dropdown.dart';
 
 class Steppers extends GetView<BookController> {
   const Steppers({Key? key}) : super(key: key);

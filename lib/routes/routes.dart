@@ -26,12 +26,12 @@ class MenuItems {
 }
 
 List<MenuItems> sideMenuItemRoute = [
-  MenuItems(overViewPageDisplayName, Routes.overViewPageRoute),
+  // MenuItems(overViewPageDisplayName, Routes.overViewPageRoute),
   MenuItems(allBooksDisplayName, Routes.allBooksDisplayRoute),
   MenuItems(addBooksDisplayName, Routes.addBooksRoute),
   MenuItems(usersPageDisplayName, Routes.studentsPageRoute),
   // MenuItems(AuthenticationPageDisplayName, Routes.authenticationPageRoute),
-  MenuItems(registerPageDisplayName, Routes.registerRoute),
+  // MenuItems(registerPageDisplayName, Routes.registerRoute),
 ];
 
 class AppRoutes {

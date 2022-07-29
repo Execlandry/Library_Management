@@ -18,47 +18,47 @@ class BooksPage extends GetView<BookController> {
             itemCount: controller.foundBooks.value.length,
             itemBuilder: (context, index) => GestureDetector(
               onLongPress: () =>
-                  displayDeleteDialog(controller.books[index].docId!),
+                  displayDeleteDialog(controller.foundBooks[index].docId!),
               onTap: () {
                 controller.accessionNoController.text =
-                    controller.books[index].accessionNo!;
+                    controller.foundBooks[index].accessionNo!;
                 controller.titleController.text =
-                    controller.books[index].title!;
+                    controller.foundBooks[index].title!;
                 controller.authorController.text =
-                    controller.books[index].author!;
+                    controller.foundBooks[index].author!;
                 controller.placeController.text =
-                    controller.books[index].place!;
+                    controller.foundBooks[index].place!;
                 controller.editionController.text =
-                    controller.books[index].edition!;
+                    controller.foundBooks[index].edition!;
                     
                 controller.yearController.text =
-                    controller.books[index].year!;
+                    controller.foundBooks[index].year!;
 
                     controller.pagesController.text =
-                    controller.books[index].pages!;
+                    controller.foundBooks[index].pages!;
 
                     controller.sourceController.text =
-                    controller.books[index].source!;
+                    controller.foundBooks[index].source!;
 
                     controller.billNoController.text =
-                    controller.books[index].billNo!;
+                    controller.foundBooks[index].billNo!;
 
                     controller.billDateController.text =
-                    controller.books[index].billDate!;
+                    controller.foundBooks[index].billDate!;
 
                     controller.costController.text =
-                    controller.books[index].cost!;
+                    controller.foundBooks[index].cost!;
 
                     controller.callNoController.text =
-                    controller.books[index].callNo!;
+                    controller.foundBooks[index].callNo!;
 
                     controller.stockedatController.text =
-                    controller.books[index].stockedAt!;
+                    controller.foundBooks[index].stockedAt!;
 
                 _buildAddEditbooksView(
                     text: 'Update',
                     addEditFlag: 2,
-                    docId: controller.books[index].docId!);
+                    docId: controller.foundBooks[index].docId!);
               },
               child: BookCard(
                 accession: controller
@@ -82,7 +82,7 @@ class BooksPage extends GetView<BookController> {
               //           .foundBooks[index].department!.capitalize!
               //           .trim() +
               //       " Department",
-              //   contactNumber: controller.books[index].contactNumber!.trim(),
+              //   contactNumber: controller.foundBooks[index].contactNumber!.trim(),
               //   enrollment: controller.foundBooks[index].enrollment!.trim(),
               //   year: controller.foundBooks[index].year!.trim(),
               // ),
