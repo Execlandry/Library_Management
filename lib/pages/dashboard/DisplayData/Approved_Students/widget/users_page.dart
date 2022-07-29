@@ -27,25 +27,25 @@ class UsersPage extends GetView<UsersController> {
               color: Color.fromARGB(255, 150, 157, 177),
               child: GestureDetector(
                 onLongPress: () =>
-                    displayDeleteDialog(controller.users[index].docId!),
+                    displayDeleteDialog(controller.foundUsers[index].docId!),
                 onTap: () {
                   controller.nameController.text =
-                      controller.users[index].name!;
+                      controller.foundUsers[index].name!;
                   controller.emailController.text =
-                      controller.users[index].email!;
+                      controller.foundUsers[index].email!;
                   controller.departmentController.text =
-                      controller.users[index].department!;
+                      controller.foundUsers[index].department!;
                   controller.contactController.text =
-                      controller.users[index].contactNumber!;
+                      controller.foundUsers[index].contactNumber!;
                   controller.enrollmentController.text =
-                      controller.users[index].enrollment!;
+                      controller.foundUsers[index].enrollment!;
                   controller.yearController.text =
-                      controller.users[index].year!;
+                      controller.foundUsers[index].year!;
 
                   _buildAddEditUsersView(
                       text: 'Update',
                       addEditFlag: 2,
-                      docId: controller.users[index].docId!);
+                      docId: controller.foundUsers[index].docId!);
                 },
                 child: UserCard(
                   fullName:
@@ -55,7 +55,7 @@ class UsersPage extends GetView<UsersController> {
                           .foundUsers[index].department!.capitalize!
                           .trim() +
                       " Department",
-                  contactNumber: controller.users[index].contactNumber!.trim(),
+                  contactNumber: controller.foundUsers[index].contactNumber!.trim(),
                   enrollment: controller.foundUsers[index].enrollment!.trim(),
                   year: controller.foundUsers[index].year!.trim(),
                 ),

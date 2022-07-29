@@ -55,7 +55,7 @@ class BookController extends GetxController {
     foundBooks.value = books;
   }
 
-  void saveBook(
+  void saveUpdateBook(
       String docId,
       int addEditFlag,
       String accessionNo,
@@ -111,6 +111,40 @@ class BookController extends GetxController {
             message: "Something went wrong",
             backgroundColor: Colors.red);
       });
+    } else if (addEditFlag == 2) {
+      //update
+      CustomFullScreenDialog.showDialog();
+      collectionReference.doc(docId).update({
+        'accessionNo': accessionNo,
+        'title': title,
+        'author': author,
+        'place': place,
+        'edition': edition,
+        'year': year,
+        'pages': pages,
+        'source': source,
+        'billNo': billNo,
+        'billDate': billDate,
+        'cost': cost,
+        'callNo': callNo,
+        'stockedAt': stockedAt
+      }).whenComplete(() {
+        CustomFullScreenDialog.cancelDialog();
+        clearEditingControllers();
+        Get.back();
+        CustomSnackBar.showSnackBar(
+            context: Get.context,
+            title: "Book Updated",
+            message: "Book updated successfully",
+            backgroundColor: Colors.green);
+      }).catchError((error) {
+        CustomFullScreenDialog.cancelDialog();
+        CustomSnackBar.showSnackBar(
+            context: Get.context,
+            title: "Error",
+            message: "Something went wrong",
+            backgroundColor: Colors.red);
+      });
     }
   }
 
@@ -134,6 +168,26 @@ class BookController extends GetxController {
     costController.dispose();
     callNoController.dispose();
     stockedatController.dispose();
+  }
+
+  void deleteData(String docId) {
+    CustomFullScreenDialog.showDialog();
+    collectionReference.doc(docId).delete().whenComplete(() {
+      CustomFullScreenDialog.cancelDialog();
+      Get.back();
+      CustomSnackBar.showSnackBar(
+          context: Get.context,
+          title: "Book Deleted",
+          message: "Book deleted successfully",
+          backgroundColor: Colors.green);
+    }).catchError((error) {
+      CustomFullScreenDialog.cancelDialog();
+      CustomSnackBar.showSnackBar(
+          context: Get.context,
+          title: "Error",
+          message: "Something went wrong",
+          backgroundColor: Colors.red);
+    });
   }
 
   void filterBooks(String bookName) {

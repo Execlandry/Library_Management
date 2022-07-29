@@ -3,20 +3,19 @@ import 'package:library_management/dash_landing.dart';
 import 'package:library_management/pages/dashboard/DisplayData/404/error.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/admin_reg.dart';
 import 'package:library_management/pages/dashboard/DisplayData/Authentication/auth.dart';
-import 'package:library_management/pages/dashboard/DisplayData/Authentication/register.dart';
 import 'package:library_management/pages/introUi/welcome_page.dart';
 import 'package:library_management/home_landing.dart';
-import 'package:library_management/controllers/FirebaseController/authController.dart';
 
-const RegisterPageDisplayName = "Register";
+const registerPageDisplayName = "Register";
 
-const OverViewPageDisplayName = "Overview";
+const overViewPageDisplayName = "Overview";
 
-const AddBooksDisplayName = "Add Books";
+const allBooksDisplayName = "All Books";
+const addBooksDisplayName = "Add Books";
 
-const UsersPageDisplayName = "Users";
+const usersPageDisplayName = "Users";
 
-const AuthenticationPageDisplayName = "Log Out";
+const authenticationPageDisplayName = "Log Out";
 // const AuthenticationPageRoute = "/auth";
 
 class MenuItems {
@@ -27,11 +26,12 @@ class MenuItems {
 }
 
 List<MenuItems> sideMenuItemRoute = [
-  MenuItems(OverViewPageDisplayName, Routes.overViewPageRoute),
-  MenuItems(AddBooksDisplayName, Routes.addBooksRoute),
-  MenuItems(UsersPageDisplayName, Routes.studentsPageRoute),
+  // MenuItems(overViewPageDisplayName, Routes.overViewPageRoute),
+  MenuItems(allBooksDisplayName, Routes.allBooksDisplayRoute),
+  MenuItems(addBooksDisplayName, Routes.addBooksRoute),
+  MenuItems(usersPageDisplayName, Routes.studentsPageRoute),
   // MenuItems(AuthenticationPageDisplayName, Routes.authenticationPageRoute),
-  MenuItems(RegisterPageDisplayName, Routes.registerRoute),
+  // MenuItems(registerPageDisplayName, Routes.registerRoute),
 ];
 
 class AppRoutes {
@@ -64,7 +64,8 @@ class Routes {
   static const rootRoute = "/dashboard";
   static const authenticationPageRoute = "/auth";
   static const overViewPageRoute = "/overview";
-  static const addBooksRoute = "/books";
+  static const allBooksDisplayRoute = "/all-books";
+  static const addBooksRoute = "/add-books";
   static const studentsPageRoute = "/students";
   static const registerRoute = "/register";
 }

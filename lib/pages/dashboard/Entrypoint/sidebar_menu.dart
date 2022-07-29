@@ -61,14 +61,15 @@ class SideBar extends StatelessWidget {
                       onTap: () {
                         if (item.route == Routes.authenticationPageRoute) {
                           Get.offAllNamed(Routes.authenticationPageRoute);
-                          menuController.changeActiveitemTo(OverViewPageDisplayName);
+                          menuController
+                              .changeActiveitemTo(overViewPageDisplayName);
                         }
 
                         if (!menuController.isActive(item.name)) {
                           menuController.changeActiveitemTo(item.name);
-                          if (ResponsiveWidget.isSmallScreen(context)){
+                          if (ResponsiveWidget.isSmallScreen(context)) {
                             Get.back();
-                            }
+                          }
                           navigationController.navigateTo(item.route);
                         }
                       },
